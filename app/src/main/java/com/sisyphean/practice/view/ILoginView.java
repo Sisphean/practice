@@ -13,4 +13,8 @@ public interface ILoginView extends IView {
     void loginFailHandle();
 
     void clear();
+
+    void validateAccount();
+
+    void validatePwd();
 }

@@ -1,6 +1,7 @@
 package com.sisyphean.practice.net;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.JsonParseException;
@@ -32,6 +33,7 @@ public abstract class BaseObserver<T> extends DisposableObserver<ResponseBean<T>
 
     @Override
     public void onNext(ResponseBean<T> response) {
+        Log.d("xxx", "ThreadName: " + Thread.currentThread() + " | response: " + response.toString());
         if (response == null) {
             onError(new UnknownError());
         } else {

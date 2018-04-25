@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sisyphean.practice.presenter.LoginPresenter;
+import com.sisyphean.practice.utils.ToastUtil;
 import com.sisyphean.practice.view.ILoginView;
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements ILoginView,View.OnClickListener{
@@ -55,18 +56,29 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     @Override
     public void toHomeActivity() {
+        finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void loginFailHandle() {
-        Toast.makeText(this, "登录失败", Toast.LENGTH_SHORT).show();
+        ToastUtil.show(this, "登录失败");
     }
 
     @Override
     public void clear() {
 
+    }
+
+    @Override
+    public void validateAccount() {
+        ToastUtil.show(this, "请填写用户名");
+    }
+
+    @Override
+    public void validatePwd() {
+        ToastUtil.show(this, "请填写密码");
     }
 
     @Override

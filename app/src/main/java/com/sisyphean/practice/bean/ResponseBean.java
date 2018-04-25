@@ -36,4 +36,13 @@ public class ResponseBean<T> {
     public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseBean{" +
+                "data=" + data +
+                ", errorCode=" + errorCode +
+                ", errorMsg='" + errorMsg + '\'' +
+                '}';
+    }
 }

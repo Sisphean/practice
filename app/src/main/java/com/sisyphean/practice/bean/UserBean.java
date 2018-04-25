@@ -76,4 +76,17 @@ public class UserBean {
     public void setCollectIds(List<String> collectIds) {
         this.collectIds = collectIds;
     }
+
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "email='" + email + '\'' +
+                ", icon='" + icon + '\'' +
+                ", id=" + id +
+                ", password='" + password + '\'' +
+                ", type=" + type +
+                ", username='" + username + '\'' +
+                ", collectIds=" + collectIds +
+                '}';
+    }
 }
