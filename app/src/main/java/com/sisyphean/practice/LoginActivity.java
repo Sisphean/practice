@@ -1,23 +1,21 @@
 package com.sisyphean.practice;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.sisyphean.practice.R;
 import com.sisyphean.practice.presenter.LoginPresenter;
 import com.sisyphean.practice.view.ILoginView;
 
-public class LoginActivity extends BaseActivity implements ILoginView,View.OnClickListener{
+public class LoginActivity extends BaseActivity<LoginPresenter> implements ILoginView,View.OnClickListener{
 
     private EditText et_username;
     private EditText et_password;
     private Button btn_login;
-    private LoginPresenter loginPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +23,11 @@ public class LoginActivity extends BaseActivity implements ILoginView,View.OnCli
         setContentView(R.layout.activity_login_acticity);
 
         initView();
-        loginPresenter = new LoginPresenter(this);
+    }
+
+    @Override
+    protected void createPresenter() {
+        presenter = new LoginPresenter();
     }
 
     private void initView() {
@@ -48,7 +50,7 @@ public class LoginActivity extends BaseActivity implements ILoginView,View.OnCli
 
     @Override
     public void loginAction() {
-        loginPresenter.userLogin();
+        presenter.userLogin();
     }
 
     @Override

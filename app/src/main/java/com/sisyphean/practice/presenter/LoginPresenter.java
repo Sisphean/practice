@@ -5,30 +5,42 @@ import com.sisyphean.practice.model.impl.LoginModel;
 import com.sisyphean.practice.net.BaseObserver;
 import com.sisyphean.practice.view.ILoginView;
 
-public class LoginPresenter {
+public class LoginPresenter extends BasePresenter<ILoginView> {
 
-    private ILoginView loginView;
     private LoginModel loginModel;
 
-    public LoginPresenter(ILoginView loginView) {
-        this.loginView = loginView;
+
+    public LoginPresenter() {
         loginModel = new LoginModel();
     }
 
     public void userLogin() {
-        loginModel.userLogin(loginView.getUsername(),
-                loginView.getPassword(),
-                new BaseObserver<UserBean>(loginView.getContext(), new BaseObserver.ResponseHandleCallback<UserBean>() {
-                    @Override
-                    public void onSuccess(UserBean data) {
-                        loginView.toHomeActivity();
-                    }
 
-                    @Override
-                    public void onFail(int errorCode, String errorMsg) {
-                        loginView.loginFailHandle();
-                    }
-                }));
+        BaseObserver<UserBean> loginObserver = new BaseObserver<UserBean>(view.getContext()) {
+
+            @Override
+            protected void onStart() {
+                super.onStart();
+                getView().showLoading("正在登录中...");
+            }
+
+            @Override
+            protected void onSuccess(UserBean data) {
+                getView().hideLoading();
+                getView().toHomeActivity();
+            }
+
+            @Override
+            protected void onFail(int errorCode, String errorMsg) {
+                getView().hideLoading();
+                getView().loginFailHandle();
+            }
+        };
+
+        mCompositeDisposable.add(
+                loginModel.userLogin(getView().getUsername(), getView().getPassword())
+                        .subscribeWith(loginObserver)
+        );
     }
 
 

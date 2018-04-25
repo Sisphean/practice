@@ -5,4 +5,9 @@ import android.content.Context;
 public interface IView {
 
     Context getContext();
+
+    void showLoading(String msg);
+
+    void hideLoading();
+
 }

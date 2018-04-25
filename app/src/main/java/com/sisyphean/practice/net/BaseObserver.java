@@ -15,25 +15,28 @@ import java.text.ParseException;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 
-public class BaseObserver<T> implements Observer<ResponseBean<T>> {
+public abstract class BaseObserver<T> extends DisposableObserver<ResponseBean<T>> {
 
     private Context context;
-    private ResponseHandleCallback<T> callback;
 
-    public BaseObserver(Context context, ResponseHandleCallback<T> callback) {
+    public BaseObserver(Context context) {
         this.context = context;
-        this.callback = callback;
     }
 
     @Override
-    public void onSubscribe(Disposable d) {
-
+    protected void onStart() {
+        super.onStart();
     }
 
     @Override
     public void onNext(ResponseBean<T> response) {
-        responseHandle(response, callback);
+        if (response == null) {
+            onError(new UnknownError());
+        } else {
+            responseHandle(response);
+        }
     }
 
     @Override
@@ -47,19 +50,14 @@ public class BaseObserver<T> implements Observer<ResponseBean<T>> {
     }
 
 
-    private boolean responseHandle(ResponseBean<T> response, ResponseHandleCallback<T> callback) {
-        if (response == null) {
-            Toast.makeText(context, "response is null", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
+    private void responseHandle(ResponseBean<T> response) {
         switch (response.getErrorCode()) {
             case 0:
-                callback.onSuccess(response.getData());
-                return true;
+                onSuccess(response.getData());
+                break;
             default:
-                callback.onFail(response.getErrorCode(), response.getErrorMsg());
-                return false;
+                onFail(response.getErrorCode(), response.getErrorMsg());
+                break;
         }
     }
 
@@ -83,10 +81,8 @@ public class BaseObserver<T> implements Observer<ResponseBean<T>> {
 
     }
 
-    public interface ResponseHandleCallback<T> {
-        void onSuccess(T data);
+    protected abstract void onSuccess(T data);
 
-        void onFail(int errorCode, String errorMsg);
-    }
+    protected abstract void onFail(int errorCode, String errorMsg);
 
 }
