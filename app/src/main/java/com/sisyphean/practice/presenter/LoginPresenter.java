@@ -2,11 +2,13 @@ package com.sisyphean.practice.presenter;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
 import com.sisyphean.practice.App;
 import com.sisyphean.practice.bean.UserBean;
 import com.sisyphean.practice.common.Constant;
 import com.sisyphean.practice.model.impl.LoginModel;
 import com.sisyphean.practice.net.BaseObserver;
+import com.sisyphean.practice.utils.GsonUtil;
 import com.sisyphean.practice.utils.SPUtil;
 import com.sisyphean.practice.view.ILoginView;
 
@@ -25,10 +27,6 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
     public LoginPresenter() {
         loginModel = new LoginModel();
-    }
-
-    public void checkLogin() {
-        Boolean isLogin = (Boolean) SPUtil.getValue(Constant.KEY_LOGINSTATUS, false);
     }
 
     public void userLogin() {
@@ -80,8 +78,10 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     }
 
     private void saveLoginStatus(UserBean data) {
-        SPUtil.putValue(Constant.KEY_USERNAME, data.getUsername());
-        SPUtil.putValue(Constant.KEY_PASSWORD, data.getPassword());
+//        SPUtil.putValue(Constant.KEY_USERNAME, data.getUsername());
+//        SPUtil.putValue(Constant.KEY_PASSWORD, data.getPassword());
+        String json = GsonUtil.toJson(data);
+        SPUtil.putValue(Constant.KEY_LOGIN_INFO, json);
         SPUtil.putValue(Constant.KEY_LOGINSTATUS, true);
     }
 }
