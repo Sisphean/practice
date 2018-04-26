@@ -3,14 +3,16 @@ package com.sisyphean.practice.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.sisyphean.practice.App;
+
 import java.util.Map;
 
 public class SPUtil {
 
     private final static String SP_NAME = "Config";
 
-    public static void putValue(Context context, String key, Object value) {
-        SharedPreferences sp = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+    public static void putValue(String key, Object value) {
+        SharedPreferences sp = App.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         if (value instanceof String) {
             editor.putString(key, (String) value);
@@ -27,8 +29,8 @@ public class SPUtil {
         editor.apply();
     }
 
-    public static Object getValue(Context context, String key, Object defaultValue) {
-        SharedPreferences sp = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+    public static Object getValue(String key, Object defaultValue) {
+        SharedPreferences sp = App.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         if (defaultValue instanceof String) {
             return sp.getString(key, (String) defaultValue);
         } else if (defaultValue instanceof Integer) {
@@ -44,27 +46,27 @@ public class SPUtil {
         return null;
     }
 
-    public static void remove(Context context, String key) {
-        SharedPreferences sp = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+    public static void remove(String key) {
+        SharedPreferences sp = App.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(key);
         editor.apply();
     }
 
-    public static void clear(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+    public static void clear() {
+        SharedPreferences sp = App.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
         editor.apply();
     }
 
-    public static boolean contains(Context context, String key) {
-        SharedPreferences sp = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+    public static boolean contains(String key) {
+        SharedPreferences sp = App.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         return sp.contains(key);
     }
 
-    public static Map<String, ?> getAll(Context context) {
-        SharedPreferences sp = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+    public static Map<String, ?> getAll() {
+        SharedPreferences sp = App.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
         return sp.getAll();
     }
 }
