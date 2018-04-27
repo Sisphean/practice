@@ -1,6 +1,5 @@
 package com.sisyphean.practice.utils;
 
-import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
@@ -12,6 +11,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+
+import okio.BufferedSink;
+import okio.BufferedSource;
+import okio.Okio;
 
 public class StorageUtil {
 
@@ -52,10 +55,14 @@ public class StorageUtil {
      */
     public static File getFilesDir(String fileName) {
         File file = new File(App.getContext().getFilesDir(), fileName);
-        if (!file.exists()) {
-            if (!file.mkdirs()) {
-                throw new RuntimeException("file create fail");
+        try {
+            if (!file.exists()) {
+                if (!file.createNewFile()) {
+                    throw new RuntimeException("file create fail");
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return file;
     }
@@ -67,28 +74,40 @@ public class StorageUtil {
         } else {
             file = getFilesDir(fileName);
         }
-        Log.d("xxx", file.getAbsolutePath());
-        FileOutputStream out = null;
-        ObjectOutputStream objout = null;
+        BufferedSink bufferedSink = null;
         try {
-            out = new FileOutputStream(file);
-            objout = new ObjectOutputStream(out);
-            objout.writeObject(object);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            bufferedSink = Okio.buffer(Okio.sink(file));
+            bufferedSink.writeUtf8(GsonUtil.toJson(object));
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            quietClosed(out);
-            quietClosed(objout);
+            closeQuietly(bufferedSink);
         }
     }
 
-    public static void get() {
+    public static <T> T get(String fileName, Class<T> classOfT) {
+        File file = null;
+        if (isExternalStorageEnable()) {
+            file = getExternalStorageDir(fileName);
+        } else {
+            file = getFilesDir(fileName);
+        }
+
+        BufferedSource bufferedSource = null;
+        try {
+            bufferedSource = Okio.buffer(Okio.source(file));
+            String json = bufferedSource.readUtf8();
+            return GsonUtil.fromJson(json, classOfT);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeQuietly(bufferedSource);
+        }
 
     }
 
-    public static void quietClosed(Closeable closeable) {
+    private static void closeQuietly(Closeable closeable) {
         try {
             if (closeable != null)
                 closeable.close();
