@@ -1,4 +1,4 @@
-package com.sisyphean.practice;
+package com.sisyphean.practice.ui.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;

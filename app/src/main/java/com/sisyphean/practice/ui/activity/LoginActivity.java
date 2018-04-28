@@ -1,12 +1,12 @@
-package com.sisyphean.practice;
+package com.sisyphean.practice.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.sisyphean.practice.R;
 import com.sisyphean.practice.presenter.LoginPresenter;
 import com.sisyphean.practice.utils.ToastUtil;
 import com.sisyphean.practice.view.ILoginView;

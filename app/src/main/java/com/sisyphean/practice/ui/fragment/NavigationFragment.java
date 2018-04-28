@@ -1,4 +1,4 @@
-package com.sisyphean.practice.fragment;
+package com.sisyphean.practice.ui.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 
 import com.sisyphean.practice.R;
 
-public class ProjectFragment extends Fragment {
+public class NavigationFragment extends Fragment{
 
     public static Fragment getInstance() {
-        return new ProjectFragment();
+        return new NavigationFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_project, null);
+        return inflater.inflate(R.layout.fragment_navigation, null);
     }
 }

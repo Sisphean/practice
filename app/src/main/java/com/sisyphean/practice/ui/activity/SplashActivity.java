@@ -1,4 +1,4 @@
-package com.sisyphean.practice;
+package com.sisyphean.practice.ui.activity;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.sisyphean.practice.R;
 import com.sisyphean.practice.presenter.LoginPresenter;
 import com.sisyphean.practice.presenter.SplashPresenter;
 import com.sisyphean.practice.view.ISplashView;

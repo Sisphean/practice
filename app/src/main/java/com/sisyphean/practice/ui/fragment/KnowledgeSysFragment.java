@@ -1,4 +1,4 @@
-package com.sisyphean.practice.fragment;
+package com.sisyphean.practice.ui.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;

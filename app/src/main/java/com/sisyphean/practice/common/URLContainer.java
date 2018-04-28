@@ -8,4 +8,10 @@ public class URLContainer {
      * 登陆
      */
     public final static String LOGIN_URL = "user/login";
+
+    /**
+     * 首页
+     */
+    public final static String HOME_URL = "article/list/{page}/json";
+
 }
