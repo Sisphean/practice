@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
     private List<Fragment> mFragments;
+    private int mLastFragmentId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,23 +47,18 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                FragmentTransaction ft = fragmentManager.beginTransaction();
                 switch (item.getItemId()) {
                     case R.id.tab_main_pager:
-                        ft.replace(R.id.container, mFragments.get(0));
-                        ft.commitAllowingStateLoss();
+                        switchFragment(0);
                         break;
                     case R.id.tab_knowledge_hierarchy:
-                        ft.replace(R.id.container, mFragments.get(1));
-                        ft.commitAllowingStateLoss();
+                        switchFragment(1);
                         break;
                     case R.id.tab_navigation:
-                        ft.replace(R.id.container, mFragments.get(2));
-                        ft.commitAllowingStateLoss();
+                        switchFragment(2);
                         break;
                     case R.id.tab_project:
-                        ft.replace(R.id.container, mFragments.get(3));
-                        ft.commitAllowingStateLoss();
+                        switchFragment(3);
                         break;
                 }
                 return true;
@@ -80,5 +76,21 @@ public class MainActivity extends AppCompatActivity {
         mFragments.add(knowLedgeSysFragment);
         mFragments.add(navigationFragment);
         mFragments.add(projectFragment);
+    }
+
+    private void switchFragment(int position) {
+        Fragment targetFragment = mFragments.get(position);
+        Fragment lastFragment = mFragments.get(mLastFragmentId);
+        mLastFragmentId = position;
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.hide(lastFragment);
+        if (!targetFragment.isAdded()) {
+            ft.remove(targetFragment);
+            ft.add(R.id.container, targetFragment);
+        }
+
+        ft.show(targetFragment);
+        ft.commitAllowingStateLoss();
+
     }
 }

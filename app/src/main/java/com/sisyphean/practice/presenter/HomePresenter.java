@@ -7,7 +7,7 @@ import com.sisyphean.practice.view.IHomeView;
 
 public class HomePresenter extends BasePresenter<IHomeView> {
 
-    HomeModel homeModel;
+    private HomeModel homeModel;
 
     public HomePresenter() {
         homeModel = new HomeModel();
@@ -25,7 +25,11 @@ public class HomePresenter extends BasePresenter<IHomeView> {
             @Override
             protected void onSuccess(ArticlesBean data) {
                 getView().hideLoading();
-                getView().showList(data);
+                if (data.getCurPage() == 1) {
+                    getView().showList(data);
+                } else {
+                    getView().loadMore(data);
+                }
             }
 
             @Override

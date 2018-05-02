@@ -6,6 +6,10 @@ public interface IHomeView extends IView {
 
     void showList(ArticlesBean articlesBean);
 
+    void loadMore(ArticlesBean articlesBean);
+
+    void refresh();
+
     void showEmpty();
 
     void showBanner();

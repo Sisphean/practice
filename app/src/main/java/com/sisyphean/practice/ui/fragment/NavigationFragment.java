@@ -8,8 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sisyphean.practice.R;
+import com.sisyphean.practice.presenter.BasePresenter;
 
-public class NavigationFragment extends Fragment{
+public class NavigationFragment extends BaseFragment<BasePresenter>{
 
     public static Fragment getInstance() {
         return new NavigationFragment();
@@ -18,6 +19,12 @@ public class NavigationFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.fragment_navigation, null);
+    }
+
+    @Override
+    protected void createPresenter() {
+
     }
 }
