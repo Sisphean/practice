@@ -24,8 +24,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
 
     private View rootView;
     private RecyclerView recyclerLayout;
-    private int mCurPage = 0;
     private HomeAdapter homeAdapter;
+    private SmartRefreshLayout refreshLayout;
 
     public static Fragment getInstance() {
         return new HomeFragment();
@@ -43,24 +43,30 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.reqArticleList();
+        presenter.reqArticleList(true);
     }
 
 
     private void initView() {
         recyclerLayout = rootView.findViewById(R.id.recycler_layout);
-        SmartRefreshLayout refreshLayout = rootView.findViewById(R.id.refresh_layout);
+        recyclerLayout.setLayoutManager(new LinearLayoutManager(getContext()));
+        homeAdapter = new HomeAdapter(getContext());
+        recyclerLayout.setAdapter(homeAdapter);
+
+
+        refreshLayout = rootView.findViewById(R.id.refresh_layout);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                mCurPage = 0;
-                presenter.reqArticleList();
+                presenter.reqArticleList(true);
+                refreshLayout.finishRefresh(1000);
             }
         });
         refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                presenter.reqArticleList();
+                presenter.reqArticleList(false);
+                refreshLayout.finishLoadMore(1000);
             }
         });
     }
@@ -72,17 +78,14 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
 
     @Override
     public void showList(ArticlesBean articlesBean) {
-        recyclerLayout.setLayoutManager(new LinearLayoutManager(getContext()));
-        homeAdapter = new HomeAdapter(getContext());
-        recyclerLayout.setAdapter(homeAdapter);
+
         homeAdapter.addData(articlesBean.getDatas());
-        mCurPage = articlesBean.getCurPage();
     }
 
     @Override
     public void loadMore(ArticlesBean articlesBean) {
         homeAdapter.appendData(articlesBean.getDatas());
-        mCurPage = articlesBean.getCurPage();
+
     }
 
     @Override
@@ -98,10 +101,5 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
     @Override
     public void showBanner() {
 
-    }
-
-    @Override
-    public int getCurPage() {
-        return mCurPage;
     }
 }

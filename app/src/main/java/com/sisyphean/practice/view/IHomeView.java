@@ -14,5 +14,4 @@ public interface IHomeView extends IView {
 
     void showBanner();
 
-    int getCurPage();
 }
