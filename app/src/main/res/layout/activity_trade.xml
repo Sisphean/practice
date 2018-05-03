@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_trade_headview" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="8dp"
+            android:hint="@string/money"
+            android:textSize="@dimen/text_size_normal"
+            android:background="@null"/>
+
+        <include layout="@layout/layout_line" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="44dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_trade_exchange"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:hint="@string/money"
+            android:textSize="@dimen/text_size_normal"
+            android:background="@null"/>
+
+        <include layout="@layout/layout_line" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_btn_bg"/>
+
+    </LinearLayout>
+
+</LinearLayout>

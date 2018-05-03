@@ -48,17 +48,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.tab_main_pager:
+                    case R.id.tab_trade:
                         switchFragment(0);
                         break;
-                    case R.id.tab_knowledge_hierarchy:
+                    case R.id.tab_user:
                         switchFragment(1);
                         break;
-                    case R.id.tab_navigation:
+                    case R.id.tab_message:
                         switchFragment(2);
-                        break;
-                    case R.id.tab_project:
-                        switchFragment(3);
                         break;
                 }
                 return true;

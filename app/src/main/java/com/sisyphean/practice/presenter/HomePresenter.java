@@ -2,7 +2,7 @@ package com.sisyphean.practice.presenter;
 
 import com.sisyphean.practice.bean.ArticlesBean;
 import com.sisyphean.practice.model.impl.HomeModel;
-import com.sisyphean.practice.net.BaseObserver;
+import com.sisyphean.practice.net.RxObserver;
 import com.sisyphean.practice.view.IHomeView;
 
 public class HomePresenter extends BasePresenter<IHomeView> {
@@ -20,7 +20,7 @@ public class HomePresenter extends BasePresenter<IHomeView> {
             mCurPage = 0;
         }
 
-        BaseObserver<ArticlesBean> observer = new BaseObserver<ArticlesBean>(getView().getContext()) {
+        RxObserver<ArticlesBean> observer = new RxObserver<ArticlesBean>(getView().getContext()) {
 
             @Override
             protected void onStart() {

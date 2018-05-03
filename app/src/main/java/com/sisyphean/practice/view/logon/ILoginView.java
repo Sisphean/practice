@@ -1,4 +1,6 @@
-package com.sisyphean.practice.view;
+package com.sisyphean.practice.view.logon;
+
+import com.sisyphean.practice.view.IView;
 
 public interface ILoginView extends IView {
 
@@ -17,4 +19,10 @@ public interface ILoginView extends IView {
     void validateAccount();
 
     void validatePwd();
+
+    void toRegisterActivity();
+
+    void toResetPwdActivity();
+
+    void setTitle();
 }

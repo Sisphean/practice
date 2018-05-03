@@ -6,6 +6,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class CommonViewHolder extends RecyclerView.ViewHolder {
 
@@ -43,6 +44,12 @@ public class CommonViewHolder extends RecyclerView.ViewHolder {
     public RecyclerView.ViewHolder setImage(int viewId, int resId) {
         ImageView imageView = getView(viewId);
         imageView.setImageResource(resId);
+        return this;
+    }
+
+    public RecyclerView.ViewHolder setText(int viewId, String text) {
+        TextView textView = getView(viewId);
+        textView.setText(text);
         return this;
     }
 

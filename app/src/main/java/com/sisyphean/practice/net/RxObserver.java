@@ -18,11 +18,11 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
-public abstract class BaseObserver<T> extends DisposableObserver<ResponseBean<T>> {
+public abstract class RxObserver<T> extends DisposableObserver<ResponseBean<T>> {
 
     private Context context;
 
-    public BaseObserver(Context context) {
+    public RxObserver(Context context) {
         this.context = context;
     }
 

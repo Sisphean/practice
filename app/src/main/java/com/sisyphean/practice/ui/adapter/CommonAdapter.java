@@ -24,8 +24,7 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<CommonViewHo
     @NonNull
     @Override
     public CommonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        CommonViewHolder commonViewHolder = CommonViewHolder.create(context, layoutId);
-        return commonViewHolder;
+        return CommonViewHolder.create(context, layoutId);
     }
 
     @Override

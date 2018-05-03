@@ -19,6 +19,6 @@ public class HomeAdapter extends CommonAdapter<ArticlesBean.DatasBean> {
 
     @Override
     protected void convert(CommonViewHolder holder, ArticlesBean.DatasBean data) {
-        TextView view = holder.getView(R.id.textView);
+        holder.setText(R.id.textView, data.getTitle());
     }
 }

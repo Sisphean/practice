@@ -79,12 +79,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
     @Override
     public void showList(ArticlesBean articlesBean) {
 
-        homeAdapter.addData(articlesBean.getDatas());
+        homeAdapter.updateDatas(articlesBean.getDatas());
     }
 
     @Override
     public void loadMore(ArticlesBean articlesBean) {
-        homeAdapter.appendData(articlesBean.getDatas());
+        homeAdapter.appendDatas(articlesBean.getDatas());
 
     }
 

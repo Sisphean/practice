@@ -2,23 +2,13 @@ package com.sisyphean.practice.presenter;
 
 import android.text.TextUtils;
 
-import com.google.gson.Gson;
-import com.sisyphean.practice.App;
 import com.sisyphean.practice.bean.UserBean;
 import com.sisyphean.practice.common.Constant;
 import com.sisyphean.practice.model.impl.LoginModel;
-import com.sisyphean.practice.net.BaseObserver;
+import com.sisyphean.practice.net.RxObserver;
 import com.sisyphean.practice.utils.GsonUtil;
 import com.sisyphean.practice.utils.SPUtil;
-import com.sisyphean.practice.view.ILoginView;
-
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import com.sisyphean.practice.view.logon.ILoginView;
 
 public class LoginPresenter extends BasePresenter<ILoginView> {
 
@@ -32,7 +22,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     public void userLogin() {
 
         if (validateForm()) {
-            BaseObserver<UserBean> loginObserver = new BaseObserver<UserBean>(getView().getContext()) {
+            RxObserver<UserBean> loginObserver = new RxObserver<UserBean>(getView().getContext()) {
 
                 @Override
                 protected void onStart() {
