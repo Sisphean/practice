@@ -15,6 +15,7 @@ import com.sisyphean.practice.ui.fragment.HomeFragment;
 import com.sisyphean.practice.ui.fragment.KnowledgeSysFragment;
 import com.sisyphean.practice.ui.fragment.NavigationFragment;
 import com.sisyphean.practice.ui.fragment.ProjectFragment;
+import com.sisyphean.practice.ui.fragment.user.UserMainPageFragment;
 import com.sisyphean.practice.utils.BottomNavigationViewHelper;
 
 import java.util.ArrayList;
@@ -69,9 +70,12 @@ public class MainActivity extends AppCompatActivity {
         Fragment knowLedgeSysFragment = KnowledgeSysFragment.getInstance();
         Fragment navigationFragment = NavigationFragment.getInstance();
         Fragment projectFragment = ProjectFragment.getInstance();
+        Fragment userMainPageFragment = UserMainPageFragment.getInstance();
         mFragments.add(homeFragment);
+//        mFragments.add(navigationFragment);
+        mFragments.add(userMainPageFragment);
         mFragments.add(knowLedgeSysFragment);
-        mFragments.add(navigationFragment);
+
         mFragments.add(projectFragment);
     }
 

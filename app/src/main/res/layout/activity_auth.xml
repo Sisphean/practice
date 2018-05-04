@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_toolbar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/real_name"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_normal" />
+
+            <include layout="@layout/layout_line" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@null"
+                android:hint="@string/user_id"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_normal" />
+
+            <include layout="@layout/layout_line" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_bg_border_corner">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="20dp"
+                    android:drawableTop="@drawable/ic_plus"
+                    android:text="@string/user_card_positive"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_bg_border_corner">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="20dp"
+                    android:drawableTop="@drawable/ic_plus"
+                    android:text="@string/user_card_obverse"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+            </FrameLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/shape_btn_bg"
+                android:text="@string/auth"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_normal" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

@@ -28,13 +28,37 @@
 
     <!-- 充值提现 -->
     <string name="title_recharge">充值USTD</string>
+    <string name="title_withdraw">提现</string>
     <string name="recharge_hint">34位的ustd地址</string>
     <string name="copy">复制</string>
+    <string name="number">数量</string>
+    <string name="ustd">USTD</string>
 
 
     <!-- 交易 -->
     <string name="title_buy">买入</string>
     <string name="title_sell">卖出</string>
+    <string name="trade_sell">卖出</string>
+    <string name="trade_buy">买入</string>
     <string name="money">金额</string>
+    
+    <!-- 用户 -->
+    <string name="title_user">用户</string>
+    <string name="tab_recharge">充值</string>
+    <string name="tab_withdraw">提现</string>
+    <string name="tab_auth">身份认证</string>
+    <string name="tab_log_trade">交易记录</string>
+    <string name="tab_log_recharge">充值记录</string>
+    <string name="tab_log_withdraw">提现记录</string>
+    <string name="tab_promote">推广</string>
+    <string name="tab_reset_pwd">修改密码</string>
+    <string name="tab_support">客服</string>
+
+    <string name="auth">认证</string>
+    <string name="real_name">真实姓名</string>
+    <string name="user_id">纳税ID</string>
+    <string name="user_card_positive">纳税人证件照片正面</string>
+    <string name="user_card_obverse">纳税人证件照片反面</string>
+
 
 </resources>

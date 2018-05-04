@@ -20,7 +20,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     ProgressDialog loadingDialog;
 
-    P presenter;
+    protected P mPresenter;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -82,14 +82,14 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     }
 
     private void detachView() {
-        if (presenter != null) {
-            presenter.detachView();
+        if (mPresenter != null) {
+            mPresenter.detachView();
         }
     }
 
     private void attachView() {
-        if (presenter != null) {
-            presenter.attachView(this);
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
         }
     }
 

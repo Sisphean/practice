@@ -12,6 +12,7 @@
     <color name="text_gray">#707070</color>
     <color name="text_primary">#5622A0</color>
     <color name="text_light_gray">#E4D9F2</color>
+    <color name="text_light_black">#666666</color>
 
     <color name="line_gray">#DDDDDD</color>
 

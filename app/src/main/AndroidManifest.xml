@@ -29,6 +29,9 @@
 
         <activity android:name=".ui.activity.logon.RegisterActivity"/>
         <activity android:name=".ui.activity.logon.ResetPwdActivity" />
+        <activity android:name=".ui.activity.user.RechargeActivity" />
+        <activity android:name=".ui.activity.user.WithdrawActivity" />
+        <activity android:name=".ui.activity.user.AuthActivity" />
     </application>
 
 </manifest>
