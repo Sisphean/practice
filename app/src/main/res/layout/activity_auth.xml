@@ -80,7 +80,7 @@
                 android:layout_height="36dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/shape_btn_bg"
+                android:background="@drawable/shape_bg_btn_primary"
                 android:text="@string/auth"
                 android:textColor="@color/text_white"
                 android:textSize="@dimen/text_size_normal" />

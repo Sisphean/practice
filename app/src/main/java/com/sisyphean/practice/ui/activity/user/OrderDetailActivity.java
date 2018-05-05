@@ -6,35 +6,33 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.flyco.tablayout.SlidingTabLayout;
 import com.sisyphean.practice.R;
-import com.sisyphean.practice.ui.activity.BaseToolBarActivity;
-import com.sisyphean.practice.ui.fragment.KnowledgeSysFragment;
-import com.sisyphean.practice.ui.fragment.user.RechargeFragment;
+import com.sisyphean.practice.ui.activity.BaseActivity;
+import com.sisyphean.practice.ui.fragment.user.PayTypeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RechargeActivity extends BaseToolBarActivity {
+public class OrderDetailActivity extends BaseActivity {
 
     private List<Fragment> mFragments = new ArrayList<>();
-    private List<String> mFragmentTitles = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_orderdetail);
         initView();
     }
 
     private void initView() {
         ViewPager mViewPager = findViewById(R.id.viewpager);
-        SlidingTabLayout mIndicator = findViewById(R.id.viewpager_indicator);
 
-        mFragments.add(KnowledgeSysFragment.getInstance());
-        mFragments.add(RechargeFragment.getInstance());
-
-        mFragmentTitles.add("买入");
-        mFragmentTitles.add("充值");
+        Fragment payTypeFragment = PayTypeFragment.getInstance();
+        Fragment payTypeFragment1 = PayTypeFragment.getInstance();
+        Fragment payTypeFragment2 = PayTypeFragment.getInstance();
+        mFragments.add(payTypeFragment);
+        mFragments.add(payTypeFragment1);
+        mFragments.add(payTypeFragment2);
 
         mViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -46,26 +44,8 @@ public class RechargeActivity extends BaseToolBarActivity {
             public int getCount() {
                 return mFragments.size();
             }
-
-            @Nullable
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return mFragmentTitles.get(position);
-            }
         });
 
-        mIndicator.setViewPager(mViewPager);
-
-    }
-
-    @Override
-    protected int setToolbarTitle() {
-        return R.string.title_recharge;
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_recharge;
     }
 
     @Override

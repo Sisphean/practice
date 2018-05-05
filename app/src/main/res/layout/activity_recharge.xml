@@ -1,80 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="312dp">
+        android:layout_height="wrap_content">
 
-        <include layout="@layout/layout_headview_bg" />
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/ic_back" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:text="@string/title_recharge"
-            android:textColor="@color/text_white"
-            android:textSize="@dimen/text_size_big" />
-
-        <TextView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_gravity="center"
-            android:background="@drawable/shape_circle_bg"
-            android:gravity="center"
-            android:textColor="@color/text_primary"
-            android:textSize="@dimen/text_size_large"
-            tools:text="小" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:textColor="@color/text_white"
-            android:textSize="@dimen/text_size_normal"
-            tools:text="xxxxxx" />
-    </FrameLayout>
+        <include layout="@layout/common_toolbar" />
+    </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="30dp">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:id="@+id/tv_recharge_addr"
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/viewpager_indicator"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@null"
-            android:hint="@string/recharge_hint"
-            android:padding="8dp"
-            android:textSize="@dimen/text_size_normal" />
+            android:layout_height="48dp"
+            app:tl_indicator_color="@color/colorPrimary"
+            app:tl_indicator_style="NORMAL"
+            app:tl_tab_space_equal="true"
+            app:tl_textSelectColor="@color/colorPrimary"
+            app:tl_textUnselectColor="@color/text_light_gray">
 
-        <include layout="@layout/layout_line" />
+        </com.flyco.tablayout.SlidingTabLayout>
 
-        <Button
-            android:id="@+id/btn_copy"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/copy"
-            android:textColor="@color/text_white"
-            android:textSize="@dimen/text_size_normal"
-            android:background="@drawable/shape_btn_bg"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

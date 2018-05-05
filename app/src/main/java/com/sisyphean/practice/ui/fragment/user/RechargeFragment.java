@@ -1,4 +1,4 @@
-package com.sisyphean.practice.ui.fragment;
+package com.sisyphean.practice.ui.fragment.user;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,19 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sisyphean.practice.R;
-import com.sisyphean.practice.presenter.BasePresenter;
+import com.sisyphean.practice.ui.fragment.BaseFragment;
 
-public class KnowledgeSysFragment extends BaseFragment<BasePresenter> {
+public class RechargeFragment extends BaseFragment {
 
-    public static Fragment getInstance(){
-        return new KnowledgeSysFragment();
+    public static Fragment getInstance() {
+        RechargeFragment rechargeFragment = new RechargeFragment();
+        return rechargeFragment;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_knowledge_system, null);
+        View rootView = inflater.inflate(R.layout.fragment_recharge, null);
+        return rootView;
     }
 
     @Override

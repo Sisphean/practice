@@ -48,7 +48,7 @@
             android:textSize="@dimen/text_size_normal"
             android:textColor="@color/text_white"
             tools:text="@string/trade_buy"
-            android:background="@drawable/shape_btn_bg"/>
+            android:background="@drawable/shape_bg_btn_primary"/>
 
     </LinearLayout>
 

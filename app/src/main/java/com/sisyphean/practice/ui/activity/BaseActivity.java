@@ -14,7 +14,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     private ProgressDialog loadingDialog;
 
-    protected P presenter;
+    protected P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,8 +24,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     private void attachView() {
-        if (presenter != null) {
-            presenter.attachView(this);
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
         }
     }
 
@@ -36,8 +36,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     private void detachView() {
-        if (presenter != null) {
-            presenter.detachView();
+        if (mPresenter != null) {
+            mPresenter.detachView();
         }
     }
 

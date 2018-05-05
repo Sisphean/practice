@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="@string/mobile"
+                android:singleLine="true"
                 android:padding="8dp"
                 android:textSize="@dimen/text_size_normal" />
 
@@ -38,6 +39,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@null"
                 android:hint="@string/password"
+                android:singleLine="true"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textSize="@dimen/text_size_normal" />
@@ -58,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/shape_btn_bg"
+                android:background="@drawable/shape_bg_btn_primary"
                 android:text="@string/login"
                 android:textColor="@color/text_white"
                 android:textSize="@dimen/text_size_normal" />

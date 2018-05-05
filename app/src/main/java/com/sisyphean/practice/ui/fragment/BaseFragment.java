@@ -1,16 +1,18 @@
 package com.sisyphean.practice.ui.fragment;
 
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 
+import com.sisyphean.practice.R;
 import com.sisyphean.practice.presenter.BasePresenter;
 import com.sisyphean.practice.view.IView;
 
@@ -21,6 +23,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     ProgressDialog loadingDialog;
 
     protected P mPresenter;
+    private View errorView;
+    private View emptyView;
+    private View loadView;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -29,6 +34,45 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         super.onViewCreated(view, savedInstanceState);
         createPresenter();
         attachView();
+//        initLoadView();
+//        initEmptyView();
+//        initErrorView();
+    }
+
+    private void initErrorView() {
+        if (getView() != null) {
+            ViewGroup normalView = getView().findViewById(R.id.normal_view);
+            if (normalView != null) {
+                ViewGroup parent = (ViewGroup) normalView.getParent();
+                View.inflate(getContext(), R.layout.layout_error, parent);
+                errorView = parent.findViewById(R.id.error_group);
+                errorView.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void initEmptyView() {
+        if (getView() != null) {
+            ViewGroup normalView = getView().findViewById(R.id.normal_view);
+            if (normalView != null) {
+                ViewGroup parent = (ViewGroup) normalView.getParent();
+                View.inflate(getContext(), R.layout.layout_empty, parent);
+                emptyView = parent.findViewById(R.id.empty_group);
+                emptyView.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void initLoadView() {
+        if (getView() != null) {
+            ViewGroup normalView = getView().findViewById(R.id.normal_view);
+            if (normalView != null) {
+                ViewGroup parent = (ViewGroup) normalView.getParent();
+                View.inflate(getContext(), R.layout.layout_loading, parent);
+                loadView = parent.findViewById(R.id.load_group);
+                loadView.setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override
@@ -117,5 +161,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         if (loadingDialog != null && loadingDialog.isShowing()) {
             loadingDialog.dismiss();
         }
+
     }
 }

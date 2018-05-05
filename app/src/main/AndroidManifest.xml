@@ -32,6 +32,8 @@
         <activity android:name=".ui.activity.user.RechargeActivity" />
         <activity android:name=".ui.activity.user.WithdrawActivity" />
         <activity android:name=".ui.activity.user.AuthActivity" />
+        <activity android:name=".ui.activity.user.WithdrawAddrCreateActivity" />
+        <activity android:name=".ui.activity.user.OrderDetailActivity" />
     </application>
 
 </manifest>
