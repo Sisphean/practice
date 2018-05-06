@@ -7,7 +7,7 @@
     android:background="@color/bg_white">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/normal_view"
+        android:id="@+id/recycler_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

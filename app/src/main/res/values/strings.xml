@@ -38,6 +38,7 @@
     <string name="add">添加</string>
     <string name="title_order_detail">订单详情</string>
     <string name="report">举报</string>
+    <string name="report_tips">注意:假如卖出用户举报情况属实一律封号处理</string>
 
 
     <!-- 交易 -->
@@ -55,6 +56,8 @@
     <string name="tab_log_trade">交易记录</string>
     <string name="tab_log_recharge">充值记录</string>
     <string name="tab_log_withdraw">提现记录</string>
+    <string name="tab_withdraw_account">提现账户</string>
+    <string name="tab_my_trade">我的买入卖出</string>
     <string name="tab_promote">推广</string>
     <string name="tab_reset_pwd">修改密码</string>
     <string name="tab_support">客服</string>

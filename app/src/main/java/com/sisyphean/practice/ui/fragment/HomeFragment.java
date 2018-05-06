@@ -48,7 +48,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
 
 
     private void initView() {
-        recyclerLayout = rootView.findViewById(R.id.normal_view);
+        recyclerLayout = rootView.findViewById(R.id.recycler_layout);
         recyclerLayout.setLayoutManager(new LinearLayoutManager(getContext()));
         homeAdapter = new HomeAdapter(getContext());
         recyclerLayout.setAdapter(homeAdapter);

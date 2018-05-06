@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.sisyphean.practice.R;
@@ -24,6 +25,16 @@ public class RechargeActivity extends BaseToolBarActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+    }
+
+    @Override
+    protected int getMenuId() {
+        return 0;
+    }
+
+    @Override
+    protected void onMenuItemClickListener(MenuItem item) {
+
     }
 
     private void initView() {

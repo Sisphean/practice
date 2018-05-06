@@ -16,6 +16,7 @@ import com.sisyphean.practice.ui.activity.logon.ResetPwdActivity;
 import com.sisyphean.practice.ui.activity.user.AuthActivity;
 import com.sisyphean.practice.ui.activity.user.OrderDetailActivity;
 import com.sisyphean.practice.ui.activity.user.RechargeActivity;
+import com.sisyphean.practice.ui.activity.user.WithdrawAccountActivity;
 import com.sisyphean.practice.ui.activity.user.WithdrawActivity;
 import com.sisyphean.practice.ui.fragment.BaseFragment;
 import com.sisyphean.practice.view.user.IUserMainPageView;
@@ -52,6 +53,8 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
         ViewGroup rl_trade_log = rootView.findViewById(R.id.rl_trade_log);
         ViewGroup rl_recharge_log = rootView.findViewById(R.id.rl_recharge_log);
         ViewGroup rl_withdraw_log = rootView.findViewById(R.id.rl_withdraw_log);
+        ViewGroup rl_withdraw_account = rootView.findViewById(R.id.rl_withdraw_account);
+        ViewGroup rl_my_trade = rootView.findViewById(R.id.rl_my_trade);
         ViewGroup rl_promote = rootView.findViewById(R.id.rl_promote);
         ViewGroup rl_reset_pwd = rootView.findViewById(R.id.rl_reset_pwd);
         ViewGroup rl_support = rootView.findViewById(R.id.rl_support);
@@ -62,6 +65,8 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
         rl_trade_log.setOnClickListener(this);
         rl_recharge_log.setOnClickListener(this);
         rl_withdraw_log.setOnClickListener(this);
+        rl_withdraw_account.setOnClickListener(this);
+        rl_my_trade.setOnClickListener(this);
         rl_promote.setOnClickListener(this);
         rl_reset_pwd.setOnClickListener(this);
         rl_support.setOnClickListener(this);
@@ -107,6 +112,17 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
 
     @Override
     public void toTradeLogActivity() {
+
+    }
+
+    @Override
+    public void toWithdrawAccountActivity() {
+        Intent intent = new Intent(getActivity(), WithdrawAccountActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void toMyTradeActivity() {
 
     }
 
@@ -162,6 +178,12 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
                 break;
             case R.id.rl_withdraw_log:
                 toWithdrawLogActivity();
+                break;
+            case R.id.rl_withdraw_account:
+                toWithdrawAccountActivity();
+                break;
+            case R.id.rl_my_trade:
+                toMyTradeActivity();
                 break;
             case R.id.rl_promote:
                 toPromoteActivity();

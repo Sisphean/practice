@@ -16,6 +16,10 @@ public interface IUserMainPageView extends IView {
 
     void toTradeLogActivity();
 
+    void toWithdrawAccountActivity();
+
+    void toMyTradeActivity();
+
     void toPromoteActivity();
 
     void toResetPwdActivity();

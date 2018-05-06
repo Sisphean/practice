@@ -34,6 +34,7 @@
         <activity android:name=".ui.activity.user.AuthActivity" />
         <activity android:name=".ui.activity.user.WithdrawAddrCreateActivity" />
         <activity android:name=".ui.activity.user.OrderDetailActivity" />
+        <activity android:name=".ui.activity.user.WithdrawAccountActivity" />
     </application>
 
 </manifest>

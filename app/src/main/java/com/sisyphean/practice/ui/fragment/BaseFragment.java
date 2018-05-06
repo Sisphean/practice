@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 
 import com.sisyphean.practice.R;
 import com.sisyphean.practice.presenter.BasePresenter;
@@ -41,7 +40,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     private void initErrorView() {
         if (getView() != null) {
-            ViewGroup normalView = getView().findViewById(R.id.normal_view);
+            ViewGroup normalView = getView().findViewById(R.id.refresh_layout);
             if (normalView != null) {
                 ViewGroup parent = (ViewGroup) normalView.getParent();
                 View.inflate(getContext(), R.layout.layout_error, parent);
@@ -53,7 +52,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     private void initEmptyView() {
         if (getView() != null) {
-            ViewGroup normalView = getView().findViewById(R.id.normal_view);
+            ViewGroup normalView = getView().findViewById(R.id.refresh_layout);
             if (normalView != null) {
                 ViewGroup parent = (ViewGroup) normalView.getParent();
                 View.inflate(getContext(), R.layout.layout_empty, parent);
@@ -65,7 +64,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     private void initLoadView() {
         if (getView() != null) {
-            ViewGroup normalView = getView().findViewById(R.id.normal_view);
+            ViewGroup normalView = getView().findViewById(R.id.refresh_layout);
             if (normalView != null) {
                 ViewGroup parent = (ViewGroup) normalView.getParent();
                 View.inflate(getContext(), R.layout.layout_loading, parent);
