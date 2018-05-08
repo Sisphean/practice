@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <EditText
+            style="@style/style_edittext"
+            android:layout_marginTop="5dp"
+            android:hint="@string/ustd_addr_hint" />
+
+        <include layout="@layout/layout_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                style="@style/style_edittext"
+                android:layout_width="0dp"
+
+                android:layout_weight="1"
+                android:hint="@string/email_verification" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:background="@drawable/shape_bg_btn_primary"
+                android:text="@string/send"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_small" />
+        </LinearLayout>
+
+        <include layout="@layout/layout_line" />
+
+        <Button
+            style="@style/style_button"
+            android:layout_marginTop="30dp"
+            android:text="@string/add"/>
+    </LinearLayout>
+
+</LinearLayout>

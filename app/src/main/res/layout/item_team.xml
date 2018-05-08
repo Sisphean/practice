@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_label_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="昵称"
+            android:textColor="@color/text_light_black"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_label_nickname"
+            android:text="张三"
+            android:textColor="@color/text_light_black"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="+123.123USTD"
+            android:textColor="@color/text_light_black"
+            android:textSize="@dimen/text_size_small" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/layout_line" />
+
+</LinearLayout>

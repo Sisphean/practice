@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="15dp">
+
+        <FrameLayout
+            android:id="@+id/nickname_group"
+            android:layout_width="30dp"
+            android:layout_height="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_bg_circle_primary"
+                android:gravity="center"
+                android:text="张"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_normal" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:src="@drawable/pic_online" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/nickname_group"
+            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:singleLine="true"
+            android:text="张三"
+            android:textColor="@color/text_light_black"
+            android:textSize="@dimen/text_size_normal" />
+
+
+        <LinearLayout
+            android:id="@+id/pay_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_name"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付方式"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_tiny" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_yinlian" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_alipay" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_weixin" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数量  1000.1221"
+            android:layout_toRightOf="@+id/tv_name"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom"
+            android:textSize="@dimen/text_size_tiny"
+            />
+        
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="单价  3.12"
+            android:layout_marginLeft="56dp"
+            android:textSize="@dimen/text_size_tiny"
+            android:layout_toRightOf="@+id/pay_group"/>
+
+        <TextView
+            android:id="@+id/tv_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="限额  100 ~ 50000"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom"
+            android:layout_marginLeft="56dp"
+            android:textSize="@dimen/text_size_tiny"
+            android:layout_toRightOf="@+id/pay_group"/>
+
+    </RelativeLayout>
+
+    <include layout="@layout/layout_line" />
+
+</LinearLayout>

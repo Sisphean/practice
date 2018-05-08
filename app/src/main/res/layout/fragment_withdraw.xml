@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <include layout="@layout/layout_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="1dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/number"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/text_light_black"
+                android:text="@string/ustd"/>
+
+        </LinearLayout>
+
+        <include layout="@layout/layout_line" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="36dp"
+            android:text="@string/tab_withdraw"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/text_white"
+            android:background="@drawable/shape_bg_btn_primary"/>
+
+        <TextView
+            android:id="@+id/tv_create_ustd_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/text_light_black"
+            android:textSize="@dimen/text_size_normal"
+            android:text="@string/ustd_addr_create"/>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

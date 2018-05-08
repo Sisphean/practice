@@ -25,12 +25,12 @@ public class HomePresenter extends BasePresenter<IHomeView> {
             @Override
             protected void onStart() {
                 super.onStart();
-//                getView().showLoading("加载中...");
+                getView().showLoading("加载中...");
             }
 
             @Override
             protected void onSuccess(ArticlesBean data) {
-//                getView().hideLoading();
+                getView().hideLoading();
                 if (data.getCurPage() == 1) {
                     getView().showList(data);
                 } else {
@@ -41,7 +41,7 @@ public class HomePresenter extends BasePresenter<IHomeView> {
 
             @Override
             protected void onFail(int errorCode, String errorMsg) {
-//                getView().hideLoading();
+                getView().hideLoading();
                 getView().showEmpty();
 
             }

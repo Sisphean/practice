@@ -31,7 +31,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
                 textView.setText(countdown + "s");
                 countdown--;
                 if (countdown == 0) {
-                    presenter.toNextActivity();
+                    mPresenter.toNextActivity();
                 } else {
 
                     handler.postDelayed(this, 1000);
@@ -46,7 +46,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
 
     @Override
     protected void createPresenter() {
-        presenter = new SplashPresenter();
+        mPresenter = new SplashPresenter();
     }
 
     @Override

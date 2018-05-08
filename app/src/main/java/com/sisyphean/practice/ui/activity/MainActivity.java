@@ -1,10 +1,10 @@
 package com.sisyphean.practice.ui.activity;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,6 +15,7 @@ import com.sisyphean.practice.ui.fragment.HomeFragment;
 import com.sisyphean.practice.ui.fragment.KnowledgeSysFragment;
 import com.sisyphean.practice.ui.fragment.NavigationFragment;
 import com.sisyphean.practice.ui.fragment.ProjectFragment;
+import com.sisyphean.practice.ui.fragment.user.UserMainPageFragment;
 import com.sisyphean.practice.utils.BottomNavigationViewHelper;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         container = findViewById(R.id.container);
         bottomNavigationView = findViewById(R.id.navigation_btn);
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
 
         initFragments();
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -69,9 +70,12 @@ public class MainActivity extends AppCompatActivity {
         Fragment knowLedgeSysFragment = KnowledgeSysFragment.getInstance();
         Fragment navigationFragment = NavigationFragment.getInstance();
         Fragment projectFragment = ProjectFragment.getInstance();
+        Fragment userMainPageFragment = UserMainPageFragment.getInstance();
         mFragments.add(homeFragment);
+//        mFragments.add(navigationFragment);
+        mFragments.add(userMainPageFragment);
         mFragments.add(knowLedgeSysFragment);
-        mFragments.add(navigationFragment);
+
         mFragments.add(projectFragment);
     }
 
@@ -82,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.hide(lastFragment);
         if (!targetFragment.isAdded()) {
-            ft.remove(targetFragment);
+//            ft.remove(targetFragment);
             ft.add(R.id.container, targetFragment);
         }
 

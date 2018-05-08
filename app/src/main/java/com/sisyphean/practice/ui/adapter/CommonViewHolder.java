@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,8 +21,8 @@ public class CommonViewHolder extends RecyclerView.ViewHolder {
         this.itemView = itemView;
     }
 
-    public static CommonViewHolder create(Context context, int layoutId) {
-        View itemView = LayoutInflater.from(context).inflate(layoutId, null);
+    public static CommonViewHolder create(Context context, ViewGroup parent, int layoutId) {
+        View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
         return new CommonViewHolder(itemView);
     }
 

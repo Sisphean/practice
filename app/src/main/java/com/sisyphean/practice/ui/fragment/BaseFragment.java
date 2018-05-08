@@ -1,16 +1,17 @@
 package com.sisyphean.practice.ui.fragment;
 
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sisyphean.practice.R;
 import com.sisyphean.practice.presenter.BasePresenter;
 import com.sisyphean.practice.view.IView;
 
@@ -20,7 +21,10 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     ProgressDialog loadingDialog;
 
-    P presenter;
+    protected P mPresenter;
+    private View errorView;
+    private View emptyView;
+    private View loadView;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -29,6 +33,45 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         super.onViewCreated(view, savedInstanceState);
         createPresenter();
         attachView();
+//        initLoadView();
+//        initEmptyView();
+//        initErrorView();
+    }
+
+    private void initErrorView() {
+        if (getView() != null) {
+            ViewGroup normalView = getView().findViewById(R.id.refresh_layout);
+            if (normalView != null) {
+                ViewGroup parent = (ViewGroup) normalView.getParent();
+                View.inflate(getContext(), R.layout.layout_error, parent);
+                errorView = parent.findViewById(R.id.error_group);
+                errorView.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void initEmptyView() {
+        if (getView() != null) {
+            ViewGroup normalView = getView().findViewById(R.id.refresh_layout);
+            if (normalView != null) {
+                ViewGroup parent = (ViewGroup) normalView.getParent();
+                View.inflate(getContext(), R.layout.layout_empty, parent);
+                emptyView = parent.findViewById(R.id.empty_group);
+                emptyView.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void initLoadView() {
+        if (getView() != null) {
+            ViewGroup normalView = getView().findViewById(R.id.refresh_layout);
+            if (normalView != null) {
+                ViewGroup parent = (ViewGroup) normalView.getParent();
+                View.inflate(getContext(), R.layout.layout_loading, parent);
+                loadView = parent.findViewById(R.id.load_group);
+                loadView.setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override
@@ -43,8 +86,14 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView() is called. Fragment: " + this.hashCode());
         Log.d(TAG, "getUserVisibleHint() = " + getUserVisibleHint() + ". Fragment: " + this.hashCode());
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View rootView = inflater.inflate(getLayoutId(), null);
+        initView(rootView);
+        return rootView;
     }
+
+    protected abstract void initView(View rootView);
+
+    protected abstract int getLayoutId();
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -82,14 +131,14 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     }
 
     private void detachView() {
-        if (presenter != null) {
-            presenter.detachView();
+        if (mPresenter != null) {
+            mPresenter.detachView();
         }
     }
 
     private void attachView() {
-        if (presenter != null) {
-            presenter.attachView(this);
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
         }
     }
 
@@ -117,5 +166,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         if (loadingDialog != null && loadingDialog.isShowing()) {
             loadingDialog.dismiss();
         }
+
     }
 }

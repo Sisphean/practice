@@ -1,11 +1,362 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_white">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:background="@color/colorHeadViewBg"></FrameLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp">
+
+            <include layout="@layout/layout_headview_bg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="@string/title_user"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_big" />
+
+            <TextView
+                android:id="@+id/tv_simple_name"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="65dp"
+                android:background="@drawable/shape_bg_circle"
+                android:gravity="center"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_large"
+                tools:text="小" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="145dp"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_normal"
+                tools:text="xxxxxx" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <RelativeLayout
+                android:id="@+id/rl_recharge"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_recharge"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_recharge"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <TextView
+                    android:id="@+id/tv_ustd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/iv_enter"
+                    android:gravity="center_vertical"
+                    tools:text="xxxxx" />
+
+                <ImageView
+                    android:id="@+id/iv_enter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_withdraw"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_withdraw"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_withdraw"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_auth"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_auth"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_auth"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_trade_log"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_log_trade"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_record_trade"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_recharge_log"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_log_recharge"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_record_recharge"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_withdraw_log"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_log_withdraw"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_record_withdraw"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_withdraw_account"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_account"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_withdraw_account"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_my_trade"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_buy_and_sell"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_my_trade"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_promote"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_promote"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_promote"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_right_arrow" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_reset_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_reset_pwd"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_reset_pwd"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <RelativeLayout
+                android:id="@+id/rl_support"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_support"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/tab_support"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>
+

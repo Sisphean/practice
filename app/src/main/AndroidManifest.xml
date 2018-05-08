@@ -29,6 +29,16 @@
 
         <activity android:name=".ui.activity.logon.RegisterActivity"/>
         <activity android:name=".ui.activity.logon.ResetPwdActivity" />
+        <activity android:name=".ui.activity.user.RechargeActivity" />
+        <activity android:name=".ui.activity.user.WithdrawActivity" />
+        <activity android:name=".ui.activity.user.AuthActivity" />
+        <activity android:name=".ui.activity.user.WithdrawAddrCreateActivity" />
+        <activity android:name=".ui.activity.user.OrderDetailActivity" />
+        <activity android:name=".ui.activity.user.WithdrawAccountActivity" />
+        <activity android:name=".ui.activity.user.AccountBindActivity" />
+        <activity android:name=".ui.activity.user.PromoteActivity" />
+        <activity android:name=".ui.activity.user.QRCodeActivity" />
+        <activity android:name=".ui.activity.user.RechargeLogActivity" />
     </application>
 
 </manifest>

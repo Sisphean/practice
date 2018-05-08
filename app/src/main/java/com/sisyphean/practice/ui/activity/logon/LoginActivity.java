@@ -34,7 +34,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     @Override
     protected void createPresenter() {
-        presenter = new LoginPresenter();
+        mPresenter = new LoginPresenter();
     }
 
     private void initView() {
@@ -62,7 +62,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     @Override
     public void loginAction() {
-        presenter.userLogin();
+        mPresenter.userLogin();
     }
 
     @Override

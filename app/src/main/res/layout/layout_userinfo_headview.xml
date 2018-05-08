@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="312dp"
+    android:background="@color/colorHeadViewBg">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_wave" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:text="@string/title_recharge"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/text_size_big" />
+
+
+    <TextView
+        android:id="@+id/tv_simple_name"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="83dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/shape_bg_circle"
+        android:gravity="center"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_size_large"
+        tools:text="小" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="164dp"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/text_size_normal"
+        tools:text="xxxxxx" />
+</FrameLayout>
