@@ -15,6 +15,7 @@ import com.sisyphean.practice.presenter.UserMainPagePresenter;
 import com.sisyphean.practice.ui.activity.logon.ResetPwdActivity;
 import com.sisyphean.practice.ui.activity.user.AuthActivity;
 import com.sisyphean.practice.ui.activity.user.OrderDetailActivity;
+import com.sisyphean.practice.ui.activity.user.PromoteActivity;
 import com.sisyphean.practice.ui.activity.user.RechargeActivity;
 import com.sisyphean.practice.ui.activity.user.WithdrawAccountActivity;
 import com.sisyphean.practice.ui.activity.user.WithdrawActivity;
@@ -32,21 +33,14 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
         return userMainPageFragment;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_user_mainpage, null);
-        initView(rootView);
-        return rootView;
-    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mPresenter.getUserInfo();
     }
 
-    private void initView(View rootView) {
+    @Override
+    protected void initView(View rootView) {
         ViewGroup rl_recharge = rootView.findViewById(R.id.rl_recharge);
         ViewGroup rl_withdraw = rootView.findViewById(R.id.rl_withdraw);
         ViewGroup rl_auth = rootView.findViewById(R.id.rl_auth);
@@ -74,6 +68,11 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
         tv_simple_name = rootView.findViewById(R.id.tv_simple_name);
         tv_name = rootView.findViewById(R.id.tv_name);
         tv_ustd = rootView.findViewById(R.id.tv_ustd);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_user_mainpage;
     }
 
     @Override
@@ -128,7 +127,8 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
 
     @Override
     public void toPromoteActivity() {
-
+        Intent intent = new Intent(getActivity(), PromoteActivity.class);
+        startActivity(intent);
     }
 
     @Override

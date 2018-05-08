@@ -24,15 +24,8 @@ public class WithdrawFragment extends BaseFragment<WithdrawPresenter> implements
         return withdrawFragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_withdraw, null);
-        initView(rootView);
-        return rootView;
-    }
-
-    private void initView(View rootView) {
+    protected void initView(View rootView) {
         Spinner spinner = rootView.findViewById(R.id.spinner);
         String[] mItems = {"java", "php", "python", "C++"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, mItems);
@@ -41,6 +34,11 @@ public class WithdrawFragment extends BaseFragment<WithdrawPresenter> implements
 
         TextView tv_create_ustd_addr = rootView.findViewById(R.id.tv_create_ustd_addr);
         tv_create_ustd_addr.setOnClickListener(this);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_withdraw;
     }
 
     @Override

@@ -10,17 +10,15 @@ import android.view.MenuItem;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.sisyphean.practice.R;
 import com.sisyphean.practice.ui.activity.BaseToolBarActivity;
-import com.sisyphean.practice.ui.fragment.KnowledgeSysFragment;
-import com.sisyphean.practice.ui.fragment.user.RechargeFragment;
-import com.sisyphean.practice.ui.fragment.user.RechargeListFragment;
+import com.sisyphean.practice.ui.fragment.user.RecordsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RechargeActivity extends BaseToolBarActivity {
+public class RechargeLogActivity extends BaseToolBarActivity {
 
     private List<Fragment> mFragments = new ArrayList<>();
-    private List<String> mFragmentTitles = new ArrayList<>();
+    private String[] mFragmentTabs = {"卖出", "提现"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,25 +26,12 @@ public class RechargeActivity extends BaseToolBarActivity {
         initView();
     }
 
-    @Override
-    protected int getMenuId() {
-        return 0;
-    }
-
-    @Override
-    protected void onMenuItemClickListener(MenuItem item) {
-
-    }
-
     private void initView() {
         ViewPager mViewPager = findViewById(R.id.viewpager);
         SlidingTabLayout mIndicator = findViewById(R.id.viewpager_indicator);
 
-        mFragments.add(RechargeListFragment.getInstance());
-        mFragments.add(RechargeFragment.getInstance());
-
-        mFragmentTitles.add("买入");
-        mFragmentTitles.add("充值");
+        mFragments.add(RecordsFragment.getInstance());
+        mFragments.add(RecordsFragment.getInstance());
 
         mViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -62,22 +47,29 @@ public class RechargeActivity extends BaseToolBarActivity {
             @Nullable
             @Override
             public CharSequence getPageTitle(int position) {
-                return mFragmentTitles.get(position);
+                return mFragmentTabs[position];
             }
         });
+    }
 
-        mIndicator.setViewPager(mViewPager);
+    @Override
+    protected int getMenuId() {
+        return 0;
+    }
+
+    @Override
+    protected void onMenuItemClickListener(MenuItem item) {
 
     }
 
     @Override
     protected int setToolbarTitle() {
-        return R.string.title_recharge;
+        return R.string.tab_record_recharge;
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_recharge;
+        return R.layout.activity_viewpager;
     }
 
     @Override

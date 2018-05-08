@@ -11,7 +11,6 @@
         android:layout_gravity="bottom"
         android:background="@drawable/bg_wave" />
 
-
     <ImageView
         android:id="@+id/iv_back"
         android:layout_width="20dp"
@@ -29,6 +28,7 @@
         android:text="@string/title_recharge"
         android:textColor="@color/text_white"
         android:textSize="@dimen/text_size_big" />
+
 
     <TextView
         android:id="@+id/tv_simple_name"
@@ -51,38 +51,4 @@
         android:textColor="@color/text_white"
         android:textSize="@dimen/text_size_normal"
         tools:text="xxxxxx" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/fg_trade">
-
-        <TextView
-            android:id="@+id/tv_num"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:lineSpacingExtra="20dp"
-            android:textColor="@color/text_light_gray"
-            android:textSize="@dimen/text_size_normal"
-            tools:text="数量\n10000.1002" />
-
-        <TextView
-            android:id="@+id/tv_limit"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:lineSpacingExtra="20dp"
-            android:textColor="@color/text_light_gray"
-            android:textSize="@dimen/text_size_normal"
-            tools:text="数量\n10000.1002" />
-
-    </FrameLayout>
-
 </FrameLayout>

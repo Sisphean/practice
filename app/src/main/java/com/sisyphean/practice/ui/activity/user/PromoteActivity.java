@@ -1,5 +1,6 @@
 package com.sisyphean.practice.ui.activity.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,18 +10,20 @@ import android.view.MenuItem;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.sisyphean.practice.R;
+import com.sisyphean.practice.ui.activity.BaseActivity;
 import com.sisyphean.practice.ui.activity.BaseToolBarActivity;
-import com.sisyphean.practice.ui.fragment.KnowledgeSysFragment;
-import com.sisyphean.practice.ui.fragment.user.RechargeFragment;
-import com.sisyphean.practice.ui.fragment.user.RechargeListFragment;
+import com.sisyphean.practice.ui.fragment.ProjectFragment;
+import com.sisyphean.practice.ui.fragment.user.BonusFragment;
+import com.sisyphean.practice.ui.fragment.user.TeamFragment;
+import com.sisyphean.practice.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RechargeActivity extends BaseToolBarActivity {
+public class PromoteActivity extends BaseToolBarActivity {
 
     private List<Fragment> mFragments = new ArrayList<>();
-    private List<String> mFragmentTitles = new ArrayList<>();
+    private String[] mFragmentTabs = {"奖金记录", "我的团队"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,25 +31,12 @@ public class RechargeActivity extends BaseToolBarActivity {
         initView();
     }
 
-    @Override
-    protected int getMenuId() {
-        return 0;
-    }
-
-    @Override
-    protected void onMenuItemClickListener(MenuItem item) {
-
-    }
-
     private void initView() {
         ViewPager mViewPager = findViewById(R.id.viewpager);
         SlidingTabLayout mIndicator = findViewById(R.id.viewpager_indicator);
 
-        mFragments.add(RechargeListFragment.getInstance());
-        mFragments.add(RechargeFragment.getInstance());
-
-        mFragmentTitles.add("买入");
-        mFragmentTitles.add("充值");
+        mFragments.add(BonusFragment.getInstance());
+        mFragments.add(TeamFragment.getInstance());
 
         mViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -62,22 +52,34 @@ public class RechargeActivity extends BaseToolBarActivity {
             @Nullable
             @Override
             public CharSequence getPageTitle(int position) {
-                return mFragmentTitles.get(position);
+                return mFragmentTabs[position];
             }
         });
 
         mIndicator.setViewPager(mViewPager);
+    }
 
+    @Override
+    protected int getMenuId() {
+        return R.menu.menu_qrcode;
+    }
+
+    @Override
+    protected void onMenuItemClickListener(MenuItem item) {
+        if (item.getItemId() == R.id.action_qr_code) {
+            Intent intent = new Intent(this, QRCodeActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
     protected int setToolbarTitle() {
-        return R.string.title_recharge;
+        return R.string.tab_promote;
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_recharge;
+        return R.layout.activity_promote;
     }
 
     @Override

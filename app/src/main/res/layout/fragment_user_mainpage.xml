@@ -32,7 +32,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="65dp"
-                android:background="@drawable/shape_circle_bg"
+                android:background="@drawable/shape_bg_circle"
                 android:gravity="center"
                 android:textColor="@color/text_primary"
                 android:textSize="@dimen/text_size_large"
@@ -160,7 +160,7 @@
                     android:drawableLeft="@drawable/ic_log_trade"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
-                    android:text="@string/tab_log_trade"
+                    android:text="@string/tab_record_trade"
                     android:textColor="@color/text_light_black"
                     android:textSize="@dimen/text_size_normal" />
 
@@ -187,7 +187,7 @@
                     android:drawableLeft="@drawable/ic_log_recharge"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
-                    android:text="@string/tab_log_recharge"
+                    android:text="@string/tab_record_recharge"
                     android:textColor="@color/text_light_black"
                     android:textSize="@dimen/text_size_normal" />
 
@@ -214,7 +214,7 @@
                     android:drawableLeft="@drawable/ic_log_withdraw"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
-                    android:text="@string/tab_log_withdraw"
+                    android:text="@string/tab_record_withdraw"
                     android:textColor="@color/text_light_black"
                     android:textSize="@dimen/text_size_normal" />
 

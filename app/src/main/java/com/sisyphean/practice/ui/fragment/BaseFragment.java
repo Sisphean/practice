@@ -86,8 +86,14 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView() is called. Fragment: " + this.hashCode());
         Log.d(TAG, "getUserVisibleHint() = " + getUserVisibleHint() + ". Fragment: " + this.hashCode());
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View rootView = inflater.inflate(getLayoutId(), null);
+        initView(rootView);
+        return rootView;
     }
+
+    protected abstract void initView(View rootView);
+
+    protected abstract int getLayoutId();
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {

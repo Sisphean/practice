@@ -1,5 +1,6 @@
 package com.sisyphean.practice.ui.activity.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +11,6 @@ import com.sisyphean.practice.R;
 import com.sisyphean.practice.bean.WithdrawAccountBean;
 import com.sisyphean.practice.ui.activity.BaseToolBarActivity;
 import com.sisyphean.practice.ui.adapter.WithdrawAccountAdapter;
-import com.sisyphean.practice.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,8 @@ public class WithdrawAccountActivity extends BaseToolBarActivity {
     @Override
     protected void onMenuItemClickListener(MenuItem item) {
         if (item.getItemId() == R.id.action_add) {
-            ToastUtil.show(getContext(), "xxx");
+            Intent intent = new Intent(this, AccountBindActivity.class);
+            startActivity(intent);
         }
     }
 

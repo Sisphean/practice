@@ -31,23 +31,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
         return new HomeFragment();
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        rootView = inflater.inflate(R.layout.fragment_home, null);
-        initView();
-        return rootView;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mPresenter.reqArticleList(true);
-    }
-
-
-    private void initView() {
+    protected void initView(View rootView) {
         recyclerLayout = rootView.findViewById(R.id.recycler_layout);
         recyclerLayout.setLayoutManager(new LinearLayoutManager(getContext()));
         homeAdapter = new HomeAdapter(getContext());
@@ -70,6 +55,18 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
             }
         });
     }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_home;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mPresenter.reqArticleList(true);
+    }
+
 
     @Override
     protected void createPresenter() {
