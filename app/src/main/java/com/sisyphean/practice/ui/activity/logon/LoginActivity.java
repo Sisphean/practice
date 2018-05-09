@@ -14,7 +14,7 @@ import com.sisyphean.practice.ui.activity.MainActivity;
 import com.sisyphean.practice.utils.ToastUtil;
 import com.sisyphean.practice.view.logon.ILoginView;
 
-public class LoginActivity extends BaseActivity<LoginPresenter> implements ILoginView,View.OnClickListener{
+public class LoginActivity extends BaseActivity<LoginPresenter> implements ILoginView, View.OnClickListener {
 
     private EditText et_username;
     private EditText et_password;
@@ -27,9 +27,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
         initView();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_login;
     }
 
     @Override

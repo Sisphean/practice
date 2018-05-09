@@ -23,8 +23,12 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orderdetail);
         initView();
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_orderdetail;
     }
 
     private void initView() {

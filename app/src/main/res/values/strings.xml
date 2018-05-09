@@ -27,13 +27,13 @@
 
 
     <!-- 充值提现 -->
-    <string name="title_recharge">充值USTD</string>
+    <string name="title_recharge">充值USDT</string>
     <string name="title_withdraw">提现</string>
-    <string name="ustd_addr_hint">34位的ustd地址</string>
+    <string name="ustd_addr_hint">34位的usdt地址</string>
     <string name="copy">复制</string>
     <string name="number">数量</string>
-    <string name="ustd">USTD</string>
-    <string name="ustd_addr_create">没有USTD地址? 立即创建</string>
+    <string name="ustd">USDT</string>
+    <string name="ustd_addr_create">没有USDT地址? 立即创建</string>
     <string name="title_ustd_addr_create">创建提现地址</string>
     <string name="add">添加</string>
     <string name="title_order_detail">订单详情</string>
@@ -57,7 +57,7 @@
     <string name="tab_record_recharge">充值记录</string>
     <string name="tab_record_withdraw">提现记录</string>
     <string name="tab_withdraw_account">提现账户</string>
-    <string name="tab_my_trade">我的买入卖出</string>
+    <string name="tab_my_order">我的买入卖出</string>
     <string name="tab_promote">推广</string>
     <string name="tab_reset_pwd">修改密码</string>
     <string name="tab_support">客服</string>
@@ -78,6 +78,9 @@
     <string name="title_promote">推广</string>
     <string name="bonus_log">奖金记录</string>
     <string name="my_team">我的团队</string>
+
+    <!-- 订单 -->
+    <string name="title_order">订单列表</string>
 
     <string name="test">前面说了一直反复说“当ScrollView发生滚动时”，那么怎么将AppBarLayout与ScrollView关联起来呢？我们注意到，AppBarLayout与ScrollView之间动作“相互依赖”，这不就是我们上一篇《CoordinateLayout的使用如此简单 》所学的内容吗？把ScrollView和AppBarLayout作为CoordinateLayout的子View，然后编写一个Behavior，在这个Behavior里面判断当前的操作是应该让ScrollView时刻保持在AppBarLayout之下（即只要改变AppBarLayout的位置就可以一起滑动），还是应该让ScrollView内部滚动而不让AppBarLayout位置发生变化等等这些需求，都是可以在Behavior里面处理的。你可以去针对你的ScrollView编写Behavior。然而，我们看到我们的AppBarLayout事先的功能比较复杂，如果我们自己去定义这样的效果，代码非常复杂，还要考虑很多方面，好在Android帮我们写好啦，我们直接用就是了，这个ScrollView就是NestedScrollView，请注意，它并没有继承ScrollView，它继承的是FrameLayout，但是它实现的效果把它可以看成是ScrollView。
 

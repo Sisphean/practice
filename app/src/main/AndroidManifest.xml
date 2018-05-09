@@ -38,7 +38,9 @@
         <activity android:name=".ui.activity.user.AccountBindActivity" />
         <activity android:name=".ui.activity.user.PromoteActivity" />
         <activity android:name=".ui.activity.user.QRCodeActivity" />
-        <activity android:name=".ui.activity.user.RechargeLogActivity" />
+        <activity android:name=".ui.activity.user.RecordActivity" />
+        <activity android:name=".ui.activity.user.MyOrdersActivity" />
+        <activity android:name=".ui.activity.user.OrdersActivity" />
     </application>
 
 </manifest>

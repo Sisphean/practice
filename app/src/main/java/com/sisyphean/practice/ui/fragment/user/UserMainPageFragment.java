@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -14,9 +13,11 @@ import com.sisyphean.practice.R;
 import com.sisyphean.practice.presenter.UserMainPagePresenter;
 import com.sisyphean.practice.ui.activity.logon.ResetPwdActivity;
 import com.sisyphean.practice.ui.activity.user.AuthActivity;
+import com.sisyphean.practice.ui.activity.user.MyOrdersActivity;
 import com.sisyphean.practice.ui.activity.user.OrderDetailActivity;
 import com.sisyphean.practice.ui.activity.user.PromoteActivity;
 import com.sisyphean.practice.ui.activity.user.RechargeActivity;
+import com.sisyphean.practice.ui.activity.user.RecordActivity;
 import com.sisyphean.practice.ui.activity.user.WithdrawAccountActivity;
 import com.sisyphean.practice.ui.activity.user.WithdrawActivity;
 import com.sisyphean.practice.ui.fragment.BaseFragment;
@@ -100,17 +101,21 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
     }
 
     @Override
-    public void toRechargeLogActivity() {
-
+    public void toRechargeRecordActivity() {
+        Intent intent = new Intent(getActivity(), RecordActivity.class);
+        intent.putExtra(RecordActivity.KEY_TYPE, RecordActivity.TYPE_RECHARGE);
+        startActivity(intent);
     }
 
     @Override
-    public void toWithdrawLogActivity() {
-
+    public void toWithdrawRecordActivity() {
+        Intent intent = new Intent(getActivity(), RecordActivity.class);
+        intent.putExtra(RecordActivity.KEY_TYPE, RecordActivity.TYPE_WITHDRAW);
+        startActivity(intent);
     }
 
     @Override
-    public void toTradeLogActivity() {
+    public void toTradeRecordActivity() {
 
     }
 
@@ -121,8 +126,9 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
     }
 
     @Override
-    public void toMyTradeActivity() {
-
+    public void toMyOrdersActivity() {
+        Intent intent = new Intent(getActivity(), MyOrdersActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -153,8 +159,8 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
     }
 
     @Override
-    public void setUstd(float ustd) {
-        tv_ustd.setText(String.valueOf(ustd));
+    public void setUSDT(float usdt) {
+        tv_ustd.setText(String.valueOf(usdt));
     }
 
     @Override
@@ -171,19 +177,19 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
                 toAuthActivity();
                 break;
             case R.id.rl_trade_log:
-                toTradeLogActivity();
+                toTradeRecordActivity();
                 break;
             case R.id.rl_recharge_log:
-                toRechargeLogActivity();
+                toRechargeRecordActivity();
                 break;
             case R.id.rl_withdraw_log:
-                toWithdrawLogActivity();
+                toWithdrawRecordActivity();
                 break;
             case R.id.rl_withdraw_account:
                 toWithdrawAccountActivity();
                 break;
             case R.id.rl_my_trade:
-                toMyTradeActivity();
+                toMyOrdersActivity();
                 break;
             case R.id.rl_promote:
                 toPromoteActivity();

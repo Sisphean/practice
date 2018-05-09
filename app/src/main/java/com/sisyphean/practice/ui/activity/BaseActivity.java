@@ -3,24 +3,38 @@ package com.sisyphean.practice.ui.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.sisyphean.practice.presenter.BasePresenter;
 import com.sisyphean.practice.view.IView;
+import com.sisyphean.practice.widget.SwipeBackHelper;
 
 public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IView {
 
     private ProgressDialog loadingDialog;
 
     protected P mPresenter;
+    private SwipeBackHelper swipeBackHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getLayoutId());
+        swipeBackHelper = new SwipeBackHelper(this);
+        swipeBackHelper.onActivityCreate();
         createPresenter();
         attachView();
+    }
+
+    protected abstract int getLayoutId();
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        swipeBackHelper.onPostCreate();
     }
 
     private void attachView() {

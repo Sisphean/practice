@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="65dp">
+
+        <LinearLayout
+            android:id="@+id/pay_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/text_light_black"
+                android:text="支付方式"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_yinlian"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_alipay"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_weixin"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="数量 1000.1232"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/text_light_black"/>
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="单价 1000.1232"
+            android:layout_marginLeft="142dp"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/text_light_black"/>
+
+        <TextView
+            android:id="@+id/tv_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="限额 1000.1232"
+            android:layout_marginLeft="142dp"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/text_light_black"/>
+
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="类型 买入"
+            android:layout_marginLeft="142dp"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/text_light_black"/>
+
+        <Button
+            android:id="@+id/btn_order"
+            android:layout_width="50dp"
+            android:layout_height="18dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_bg_btn_primary"
+            android:text="订单"
+            android:layout_marginLeft="142dp"
+            android:textSize="@dimen/text_size_tiny"
+            android:textColor="@color/text_white"/>
+
+    </RelativeLayout>
+
+    <include layout="@layout/layout_line" />
+
+</LinearLayout>

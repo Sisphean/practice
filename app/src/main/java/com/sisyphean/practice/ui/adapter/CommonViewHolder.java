@@ -54,5 +54,11 @@ public class CommonViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public RecyclerView.ViewHolder setOnClick(int viewId, View.OnClickListener clickListener) {
+        View view = getView(viewId);
+        view.setOnClickListener(clickListener);
+        return this;
+    }
+
 
 }

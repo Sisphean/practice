@@ -18,7 +18,6 @@ public abstract class BaseToolBarActivity<P extends BasePresenter> extends BaseA
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
         initToolbar();
     }
 
@@ -54,8 +53,6 @@ public abstract class BaseToolBarActivity<P extends BasePresenter> extends BaseA
     protected abstract void onMenuItemClickListener(MenuItem item);
 
     protected abstract int setToolbarTitle();
-
-    protected abstract int getLayoutId();
 
     @Override
     public void onClick(View v) {
