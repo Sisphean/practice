@@ -33,8 +33,8 @@ public abstract class BaseToolBarActivity<P extends BasePresenter> extends BaseA
     protected abstract int getMenuId();
 
     protected void initToolbar() {
-        ImageView iv_back = findViewById(R.id.iv_back);
-        Toolbar toolbar = findViewById(R.id.toolbar_layout);
+        ImageView iv_back = (ImageView) findViewById(R.id.iv_back);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_layout);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -44,7 +44,7 @@ public abstract class BaseToolBarActivity<P extends BasePresenter> extends BaseA
                 return true;
             }
         });
-        TextView tv_toolbar_title = findViewById(R.id.tv_toolbar_title);
+        TextView tv_toolbar_title = (TextView) findViewById(R.id.tv_toolbar_title);
         iv_back.setOnClickListener(this);
         tv_toolbar_title.setText(setToolbarTitle());
 

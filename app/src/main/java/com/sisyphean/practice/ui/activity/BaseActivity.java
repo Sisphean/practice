@@ -12,19 +12,18 @@ import com.sisyphean.practice.presenter.BasePresenter;
 import com.sisyphean.practice.view.IView;
 import com.sisyphean.practice.widget.SwipeBackHelper;
 
-public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IView {
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+
+public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackActivity implements IView {
 
     private ProgressDialog loadingDialog;
 
     protected P mPresenter;
-    private SwipeBackHelper swipeBackHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        swipeBackHelper = new SwipeBackHelper(this);
-        swipeBackHelper.onActivityCreate();
         createPresenter();
         attachView();
     }
@@ -34,7 +33,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        swipeBackHelper.onPostCreate();
     }
 
     private void attachView() {

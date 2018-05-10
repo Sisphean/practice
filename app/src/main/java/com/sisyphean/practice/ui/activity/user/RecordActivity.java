@@ -35,8 +35,8 @@ public class RecordActivity extends BaseToolBarActivity {
     }
 
     private void initView() {
-        ViewPager mViewPager = findViewById(R.id.viewpager);
-        SlidingTabLayout mIndicator = findViewById(R.id.viewpager_indicator);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        SlidingTabLayout mIndicator = (SlidingTabLayout) findViewById(R.id.viewpager_indicator);
 
         if (type == TYPE_RECHARGE) {
             mFragmentTabs = new String[]{"买入", "充值"};

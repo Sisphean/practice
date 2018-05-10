@@ -42,12 +42,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     }
 
     private void initView() {
-        tv_title = findViewById(R.id.tv_logon_title);
-        et_username = findViewById(R.id.et_username);
-        et_password = findViewById(R.id.et_password);
-        btn_login = findViewById(R.id.btn_login);
-        tv_register = findViewById(R.id.tv_register);
-        tv_reset_pwd = findViewById(R.id.tv_reset_pwd);
+        tv_title = (TextView) findViewById(R.id.tv_logon_title);
+        et_username = (EditText) findViewById(R.id.et_username);
+        et_password = (EditText) findViewById(R.id.et_password);
+        btn_login = (Button) findViewById(R.id.btn_login);
+        tv_register = (TextView) findViewById(R.id.tv_register);
+        tv_reset_pwd = (TextView) findViewById(R.id.tv_reset_pwd);
 
         btn_login.setOnClickListener(this);
         tv_reset_pwd.setOnClickListener(this);

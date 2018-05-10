@@ -25,7 +25,7 @@ public class OrdersActivity extends BaseToolBarActivity {
     }
 
     private void initView() {
-        RecyclerView recyclerView = findViewById(R.id.recycler_layout);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_layout);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new OrdersAdapter(this);
         recyclerView.setAdapter(adapter);

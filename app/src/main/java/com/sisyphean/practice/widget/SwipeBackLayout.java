@@ -2,6 +2,7 @@ package com.sisyphean.practice.widget;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.ViewDragHelper;
@@ -16,6 +17,15 @@ public class SwipeBackLayout extends FrameLayout {
     private final String TAG = getClass().getSimpleName();
     private ViewDragHelper mViewDragHelper;
     private int oldLeft = 0;
+    private OnFinishScroll mOnFinishScroll;
+
+    public interface OnFinishScroll {
+        void complete();
+    }
+
+    public void setOnFinishScroll(OnFinishScroll mFinishScroll) {
+        this.mOnFinishScroll = mFinishScroll;
+    }
 
     public SwipeBackLayout(@NonNull Context context) {
         this(context, null, 0);
@@ -57,7 +67,14 @@ public class SwipeBackLayout extends FrameLayout {
 
             @Override
             public int getViewHorizontalDragRange(@NonNull View child) {
-                return 1;
+                return ViewDragHelper.EDGE_LEFT;
+            }
+
+            @Override
+            public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx, int dy) {
+                if (left >= getWidth()) {
+                    mOnFinishScroll.complete();
+                }
             }
         });
     }
@@ -88,9 +105,13 @@ public class SwipeBackLayout extends FrameLayout {
     }
 
     public void attachActivity(Activity activity) {
+        TypedArray typedArray = activity.getTheme().obtainStyledAttributes(new int[]{android.R.attr.windowBackground});
+        int background = typedArray.getResourceId(0, 0);
+        typedArray.recycle();
+
         ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
         View decorChild = decorView.getChildAt(0);
-        Log.d(TAG, decorChild.toString());
+        decorChild.setBackgroundResource(background);
         decorView.removeView(decorChild);
         addView(decorChild);
         decorView.addView(this);

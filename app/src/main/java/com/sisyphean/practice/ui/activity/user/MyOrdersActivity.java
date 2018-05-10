@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.sisyphean.practice.R;
@@ -26,7 +27,7 @@ public class MyOrdersActivity extends BaseToolBarActivity {
     }
 
     private void initView() {
-        RecyclerView recyclerView = findViewById(R.id.recycler_layout);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_layout);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyOrderAdapter(this);
         recyclerView.setAdapter(adapter);

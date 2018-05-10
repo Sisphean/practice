@@ -50,8 +50,8 @@ public class WithdrawActivity extends BaseToolBarActivity {
     }
 
     private void initView() {
-        ViewPager mViewPager = findViewById(R.id.viewpager);
-        SlidingTabLayout mIndicator = findViewById(R.id.viewpager_indicator);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        SlidingTabLayout mIndicator = (SlidingTabLayout) findViewById(R.id.viewpager_indicator);
 
         mFragments.add(WithdrawListFragment.getInstance());
         mFragments.add(WithdrawFragment.getInstance());

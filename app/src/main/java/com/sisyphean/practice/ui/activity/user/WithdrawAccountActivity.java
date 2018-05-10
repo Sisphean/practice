@@ -37,7 +37,7 @@ public class WithdrawAccountActivity extends BaseToolBarActivity {
     }
 
     private void initView() {
-        RecyclerView recyclerView = findViewById(R.id.recycler_layout);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_layout);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         WithdrawAccountAdapter withdrawAccountAdapter = new WithdrawAccountAdapter(this);

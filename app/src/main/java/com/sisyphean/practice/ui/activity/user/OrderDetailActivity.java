@@ -32,8 +32,8 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
     }
 
     private void initView() {
-        ViewPager mViewPager = findViewById(R.id.viewpager);
-        viewpager_indicator = findViewById(R.id.viewpager_indicator);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewpager_indicator = (IndicatorLayout) findViewById(R.id.viewpager_indicator);
 
         Fragment payTypeFragment = PayTypeFragment.getInstance();
         Fragment payTypeFragment1 = PayTypeFragment.getInstance();

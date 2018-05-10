@@ -19,6 +19,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setSwipeBackEnable(false);
         initView();
 
         handler = new Handler();
@@ -44,7 +45,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
     }
 
     private void initView() {
-        textView = findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.textView);
     }
 
     @Override
