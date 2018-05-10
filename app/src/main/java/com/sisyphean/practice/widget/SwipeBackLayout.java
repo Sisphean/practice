@@ -54,6 +54,11 @@ public class SwipeBackLayout extends FrameLayout {
                     mViewDragHelper.settleCapturedViewAt(getWidth(), 0);
                 invalidate();
             }
+
+            @Override
+            public int getViewHorizontalDragRange(@NonNull View child) {
+                return 1;
+            }
         });
     }
 
