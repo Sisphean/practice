@@ -30,7 +30,6 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<CommonViewHo
     @Override
     public void onBindViewHolder(@NonNull CommonViewHolder holder, int position) {
         convert(holder, mDatas.get(position));
-
     }
 
     protected abstract void convert(CommonViewHolder holder, T data);

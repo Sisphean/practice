@@ -16,6 +16,10 @@ import com.sisyphean.practice.utils.ToastUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+
 public class MyOrdersActivity extends BaseToolBarActivity {
 
     private MyOrderAdapter adapter;
@@ -27,10 +31,18 @@ public class MyOrdersActivity extends BaseToolBarActivity {
     }
 
     private void initView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_layout);
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_layout);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyOrderAdapter(this);
         recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+            }
+        });
 
         List<MyOrderBean> datas = new ArrayList<>();
         datas.add(new MyOrderBean());

@@ -10,6 +10,7 @@ import com.sisyphean.practice.R;
 import com.sisyphean.practice.bean.MyOrderBean;
 import com.sisyphean.practice.ui.activity.BaseToolBarActivity;
 import com.sisyphean.practice.ui.adapter.OrdersAdapter;
+import com.sisyphean.practice.widget.DividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sisyphean.practice.widget.SwipeLayout;
+
 public class CommonViewHolder extends RecyclerView.ViewHolder {
 
     SparseArray<View> mViews;
@@ -60,5 +62,9 @@ public class CommonViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-
+    public RecyclerView.ViewHolder slideToClose(int swipeLayoutId) {
+        SwipeLayout swipeLayout = getView(swipeLayoutId);
+        swipeLayout.smoothSlideToClose();
+        return this;
+    }
 }
