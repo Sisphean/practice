@@ -4,18 +4,24 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.sisyphean.practice.R;
+import com.sisyphean.practice.bean.event.MessageEvent;
+import com.sisyphean.practice.presenter.TestPresenter;
+import com.sisyphean.practice.utils.RxBus;
+import com.sisyphean.practice.view.ITestView;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
-public class TextViewFragment extends Fragment {
+public class TextViewFragment extends BaseFragment<TestPresenter> implements ITestView{
 
     private TextView textView;
 
@@ -33,6 +39,16 @@ public class TextViewFragment extends Fragment {
     }
 
     @Override
+    protected void initView(View rootView) {
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return 0;
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
@@ -40,33 +56,23 @@ public class TextViewFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Fragment edittextFragment = getParentFragment().getChildFragmentManager().findFragmentByTag("edittext");
+//        FragmentManager fragmentManager = getFragmentManager();
+        /*Fragment edittextFragment = getFragmentManager().findFragmentByTag("edittext");
         if (edittextFragment instanceof EditTextFragment) {
            textviewListener(((EditTextFragment) edittextFragment).getObservable());
-        }
+        }*/
+
+        mPresenter.textListener();
     }
 
-    public void textviewListener(Observable<String> observable) {
-        observable.subscribe(new Observer<String>() {
-            @Override
-            public void onSubscribe(Disposable d) {
+    @Override
+    protected void createPresenter() {
+        mPresenter = new TestPresenter();
+    }
 
-            }
 
-            @Override
-            public void onNext(String s) {
-                textView.setText(s);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
+    @Override
+    public void textListener(String str) {
+        textView.setText(str);
     }
 }
