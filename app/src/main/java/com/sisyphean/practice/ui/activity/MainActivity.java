@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         mFragments.add(homeFragment);
 //        mFragments.add(navigationFragment);
         mFragments.add(userMainPageFragment);
-        mFragments.add(navigationFragment);
+        mFragments.add(knowLedgeSysFragment);
 
         mFragments.add(projectFragment);
     }
