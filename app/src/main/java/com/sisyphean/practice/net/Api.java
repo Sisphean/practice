@@ -16,17 +16,50 @@ public interface Api {
 
     /**
      * 用户登录
-     * @param username
+     * @param email
      * @param password
      * @return
      */
     @FormUrlEncoded
     @POST(URLContainer.LOGIN_URL)
-    Observable<ResponseBean<UserBean>> userLogin(@Field("username") String username,
+    Observable<ResponseBean<UserBean>> userLogin(@Field("email") String email,
                                                  @Field("password") String password);
 
 
-    @GET(URLContainer.HOME_URL)
-    Observable<ResponseBean<ArticlesBean>> reqArticleList(@Path("page") int curPage);
+    /**
+     * 用户注册
+     * @param email
+     * @param password
+     * @param _password 确认密码
+     * @param spread  推荐人邮箱
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(URLContainer.REGISTER_URL)
+    Observable<ResponseBean<String>> userRegister(@Field("email") String email,
+                                                  @Field("password") String password,
+                                                  @Field("_password") String _password,
+                                                  @Field("spread") String spread);
 
+    /**
+     * 获取邮箱验证码
+     * @return
+     */
+    @GET(URLContainer.VERIFICATION_URL)
+    Observable<ResponseBean<String>> reqVerification();
+
+    /**
+     * 忘记密码
+     * @param email
+     * @param verify    验证码
+     * @param password  新密码
+     * @param _password 确认密码
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(URLContainer.RESET_PWD_URL)
+    Observable<ResponseBean<String>> resetPassword(@Field("email") String email,
+                                                   @Field("verify") String verify,
+                                                   @Field("password") String password,
+                                                   @Field("_password") String _password);
 }

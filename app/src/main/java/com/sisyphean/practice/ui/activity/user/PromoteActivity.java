@@ -26,12 +26,7 @@ public class PromoteActivity extends BaseToolBarActivity {
     private String[] mFragmentTabs = {"奖金记录", "我的团队"};
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initView();
-    }
-
-    private void initView() {
+    protected void initView() {
         ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
         SlidingTabLayout mIndicator = (SlidingTabLayout) findViewById(R.id.viewpager_indicator);
 

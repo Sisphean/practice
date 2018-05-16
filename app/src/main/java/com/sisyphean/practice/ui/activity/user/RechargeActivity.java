@@ -23,12 +23,6 @@ public class RechargeActivity extends BaseToolBarActivity {
     private List<String> mFragmentTitles = new ArrayList<>();
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initView();
-    }
-
-    @Override
     protected int getMenuId() {
         return 0;
     }
@@ -38,7 +32,8 @@ public class RechargeActivity extends BaseToolBarActivity {
 
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
         SlidingTabLayout mIndicator = (SlidingTabLayout) findViewById(R.id.viewpager_indicator);
 

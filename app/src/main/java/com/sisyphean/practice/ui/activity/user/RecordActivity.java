@@ -31,10 +31,10 @@ public class RecordActivity extends BaseToolBarActivity {
             throw new IllegalArgumentException("invalid type");
         }
         super.onCreate(savedInstanceState);
-        initView();
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
         SlidingTabLayout mIndicator = (SlidingTabLayout) findViewById(R.id.viewpager_indicator);
 

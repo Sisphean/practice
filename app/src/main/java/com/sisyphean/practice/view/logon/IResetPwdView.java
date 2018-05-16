@@ -1,8 +1,9 @@
 package com.sisyphean.practice.view.logon;
 
+import com.sisyphean.practice.view.IEmailVerifyView;
 import com.sisyphean.practice.view.IView;
 
-public interface IResetPwdView extends IView {
+public interface IResetPwdView extends IEmailVerifyView {
 
     void setTitle();
 
@@ -14,8 +15,10 @@ public interface IResetPwdView extends IView {
 
     String getPasswordConfirm();
 
-    void submitSuccess();
+    void setVerifyBtn();
 
-    void submitFail();
+    void resetSuccess();
+
+    void resetFail();
 
 }

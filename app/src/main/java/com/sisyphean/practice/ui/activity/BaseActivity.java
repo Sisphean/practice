@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.sisyphean.practice.presenter.BasePresenter;
+import com.sisyphean.practice.utils.ToastUtil;
 import com.sisyphean.practice.view.IView;
 import com.sisyphean.practice.widget.SwipeBackHelper;
 
@@ -24,9 +25,13 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        initView();
+        setTitle();
         createPresenter();
         attachView();
     }
+
+    protected abstract void initView();
 
     protected abstract int getLayoutId();
 
@@ -78,7 +83,17 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     }
 
     @Override
+    public void showToast(String msg) {
+        ToastUtil.show(this, msg);
+    }
+
+    @Override
     public Context getContext() {
         return this;
+    }
+
+    @Override
+    public void setTitle() {
+
     }
 }

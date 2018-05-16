@@ -44,7 +44,8 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
         return R.layout.activity_splash;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         textView = (TextView) findViewById(R.id.textView);
     }
 
@@ -70,5 +71,10 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
         finish();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void setTitle() {
+
     }
 }

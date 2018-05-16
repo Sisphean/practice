@@ -53,12 +53,17 @@ public abstract class RxObserver<T> extends DisposableObserver<ResponseBean<T>> 
 
 
     private void responseHandle(ResponseBean<T> response) {
-        switch (response.getErrorCode()) {
-            case 0:
-                onSuccess(response.getData());
+        switch (response.getStatus()) {
+            case 1:
+                onSuccess(response.getInfo());
                 break;
             default:
-                onFail(response.getErrorCode(), response.getErrorMsg());
+                T errorMsg = response.getInfo();
+                if (errorMsg instanceof String) {
+                    onFail(response.getStatus(), (String) errorMsg);
+                } else {
+                    onFail(response.getStatus(), null);
+                }
                 break;
         }
     }

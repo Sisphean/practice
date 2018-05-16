@@ -12,13 +12,9 @@ import com.sisyphean.practice.ui.activity.BaseToolBarActivity;
 
 public class AccountBindActivity extends BaseToolBarActivity {
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initView();
-    }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         String[] mItems = {"java", "php", "python", "C++"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mItems);

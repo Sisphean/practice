@@ -20,12 +20,7 @@ public class OrdersActivity extends BaseToolBarActivity {
     private OrdersAdapter adapter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initView();
-    }
-
-    private void initView() {
+    protected void initView() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_layout);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new OrdersAdapter(this);

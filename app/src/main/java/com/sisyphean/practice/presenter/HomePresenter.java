@@ -15,7 +15,7 @@ public class HomePresenter extends BasePresenter<IHomeView> {
         homeModel = new HomeModel();
     }
 
-    public void reqArticleList(boolean isRefresh) {
+    /*public void reqArticleList(boolean isRefresh) {
         if (isRefresh) {
             mCurPage = 0;
         }
@@ -52,6 +52,6 @@ public class HomePresenter extends BasePresenter<IHomeView> {
                         .subscribeWith(observer)
         );
 
-    }
+    }*/
 
 }

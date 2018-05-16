@@ -24,12 +24,6 @@ public class WithdrawActivity extends BaseToolBarActivity {
     private String[] titles = {"卖出", "提现"};
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initView();
-    }
-
-    @Override
     protected int getMenuId() {
         return 0;
     }
@@ -49,7 +43,8 @@ public class WithdrawActivity extends BaseToolBarActivity {
         return R.layout.activity_withdraw;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
         SlidingTabLayout mIndicator = (SlidingTabLayout) findViewById(R.id.viewpager_indicator);
 

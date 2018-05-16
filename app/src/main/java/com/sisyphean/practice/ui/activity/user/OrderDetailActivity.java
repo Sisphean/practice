@@ -21,17 +21,12 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
     private IndicatorLayout viewpager_indicator;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initView();
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.activity_orderdetail;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
         viewpager_indicator = (IndicatorLayout) findViewById(R.id.viewpager_indicator);
 

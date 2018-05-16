@@ -95,4 +95,9 @@ public class EditTextFragment extends BaseFragment<TestPresenter> {
     public Observable<String> getObservable() {
         return observable;
     }
+
+    @Override
+    public void setTitle() {
+
+    }
 }

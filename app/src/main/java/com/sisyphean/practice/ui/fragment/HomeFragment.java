@@ -40,7 +40,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
 
 
         refreshLayout = rootView.findViewById(R.id.refresh_layout);
-        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+        /*refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 mPresenter.reqArticleList(true);
@@ -53,7 +53,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
                 mPresenter.reqArticleList(false);
                 refreshLayout.finishLoadMore(1000);
             }
-        });
+        });*/
     }
 
     @Override
@@ -64,7 +64,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeVi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mPresenter.reqArticleList(true);
+//        mPresenter.reqArticleList(true);
     }
 
 

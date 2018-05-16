@@ -68,4 +68,9 @@ public class KnowledgeSysFragment extends BaseFragment<BasePresenter> {
     protected void createPresenter() {
 
     }
+
+    @Override
+    public void setTitle() {
+
+    }
 }

@@ -10,4 +10,8 @@ public interface IView {
 
     void hideLoading();
 
+    void showToast(String msg);
+
+    void setTitle();
+
 }
