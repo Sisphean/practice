@@ -28,13 +28,13 @@ public class ResetPwdPresenter extends EmailVerifyPresenter<IResetPwdView> {
                 @Override
                 protected void onSuccess(String data) {
                     getView().hideLoading();
-                    getView().resetSuccess();
+                    getView().resetSuccess(data);
                 }
 
                 @Override
                 protected void onFail(int errorCode, String errorMsg) {
                     getView().hideLoading();
-                    getView().resetFail();
+                    getView().resetFail(errorMsg);
                 }
             };
             mCompositeDisposable.add(

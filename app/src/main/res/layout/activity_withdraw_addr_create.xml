@@ -15,7 +15,7 @@
         <EditText
             style="@style/style_edittext"
             android:layout_marginTop="5dp"
-            android:hint="@string/ustd_addr_hint" />
+            android:hint="@string/usdt_addr_hint" />
 
         <include layout="@layout/layout_line" />
 

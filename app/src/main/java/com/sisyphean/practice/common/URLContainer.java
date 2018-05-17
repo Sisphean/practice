@@ -23,10 +23,15 @@ public class URLContainer {
     /**
      * 获取验证码
      */
-    public static final String VERIFICATION_URL = "register";
+    public static final String VERIFICATION_URL = "/{controller}/send";
 
     /**
      * 忘记密码
      */
     public static final String RESET_PWD_URL = "forget";
+
+    /**
+     * 用户中心
+     */
+    public static final String USER_MAIN_PAGE_URL = "";
 }

@@ -73,8 +73,4 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
         startActivity(intent);
     }
 
-    @Override
-    public void setTitle() {
-
-    }
 }

@@ -19,7 +19,7 @@ public class ResetPwdActivity extends BaseActivity<ResetPwdPresenter> implements
     private EditText et_email, et_verify, et_password, et_pwd_confirm;
     private Button btn_verify, btn_reset_pwd;
     private int countdown = 60;
-    private Handler handler;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +64,6 @@ public class ResetPwdActivity extends BaseActivity<ResetPwdPresenter> implements
     @Override
     public void verifyCD() {
         countdown = mPresenter.getVerifyCD();
-        handler = new Handler();
         handler.postDelayed(
                 new Runnable() {
                     @Override
@@ -85,12 +84,12 @@ public class ResetPwdActivity extends BaseActivity<ResetPwdPresenter> implements
 
     @Override
     public void sendSuccess() {
-
+        showToast("验证码已发送成功，注意查看邮箱");
     }
 
     @Override
     public void sendFail() {
-
+        showToast("验证码发送失败");
     }
 
     @Override
@@ -119,20 +118,20 @@ public class ResetPwdActivity extends BaseActivity<ResetPwdPresenter> implements
     }
 
     @Override
-    public void resetSuccess() {
-
+    public void resetSuccess(String data) {
+        showToast(data);
     }
 
     @Override
-    public void resetFail() {
-
+    public void resetFail(String errorMsg) {
+        showToast(errorMsg);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_verify:
-                mPresenter.reqVerification();
+                mPresenter.reqVerification("forget", 0);
                 break;
             case R.id.btn_reset_pwd:
                 mPresenter.resetPwd();

@@ -13,6 +13,7 @@ public class UserBean {
     private String email;
     private String token;
     private String nickname;
+    private String balance;
 
     public String getUid() {
         return uid;
@@ -46,6 +47,14 @@ public class UserBean {
         this.nickname = nickname;
     }
 
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "UserBean{" +
@@ -53,6 +62,7 @@ public class UserBean {
                 ", email='" + email + '\'' +
                 ", token='" + token + '\'' +
                 ", nickname='" + nickname + '\'' +
+                ", balance='" + balance + '\'' +
                 '}';
     }
 }

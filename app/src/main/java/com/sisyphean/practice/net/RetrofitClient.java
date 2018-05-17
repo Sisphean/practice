@@ -2,6 +2,7 @@ package com.sisyphean.practice.net;
 
 import com.sisyphean.practice.BuildConfig;
 import com.sisyphean.practice.common.URLContainer;
+import com.sisyphean.practice.net.interceptor.TokenInterceptor;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -37,6 +38,10 @@ public class RetrofitClient {
 
     private OkHttpClient initOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        TokenInterceptor tokenInterceptor = new TokenInterceptor();
+        builder.addInterceptor(tokenInterceptor);
+
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -44,6 +49,8 @@ public class RetrofitClient {
         }
         return builder.build();
     }
+
+
 
     public static Api getApi() {
         if (api == null) {

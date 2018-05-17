@@ -54,22 +54,22 @@ public class RegisterPresenter extends BasePresenter<IRegisterView> {
         String _password = getView().getPasswordConfirm();
         String spread = getView().getEmailRecommend();
         if (TextUtils.isEmpty(email)) {
-            getView().showToast("邮箱不能为空");
+            getView().showToast("请填写邮箱");
             return false;
         }
 
         if (TextUtils.isEmpty(password)) {
-            getView().showToast("密码不能为空");
+            getView().showToast("请填写密码");
             return false;
         }
 
         if (TextUtils.isEmpty(_password)) {
-            getView().showToast("确认密码不能为空");
+            getView().showToast("请填写确认密码");
             return false;
         }
 
         if (TextUtils.isEmpty(spread)) {
-            getView().showToast("推荐人邮箱不能为空");
+            getView().showToast("请填写推荐人邮箱");
             return false;
         }
 

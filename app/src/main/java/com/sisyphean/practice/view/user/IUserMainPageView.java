@@ -28,5 +28,5 @@ public interface IUserMainPageView extends IView {
 
     void setName(String name);
 
-    void setUSDT(float usdt);
+    void setUSDT(String usdt);
 }

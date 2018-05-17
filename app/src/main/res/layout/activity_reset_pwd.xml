@@ -68,6 +68,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@null"
                 android:hint="@string/password_new"
+                android:inputType="textPassword"
                 android:padding="8dp"
                 android:singleLine="true"
                 android:textSize="@dimen/text_size_normal" />
@@ -81,6 +82,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@null"
                 android:hint="@string/password_new_confirm"
+                android:inputType="textPassword"
                 android:padding="8dp"
                 android:singleLine="true"
                 android:textSize="@dimen/text_size_normal" />

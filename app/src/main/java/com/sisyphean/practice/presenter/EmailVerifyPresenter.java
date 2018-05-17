@@ -14,7 +14,7 @@ public class EmailVerifyPresenter<V extends IEmailVerifyView> extends BasePresen
         emailVerifyModel = new EmailVerifyModel();
     }
 
-    public void reqVerification() {
+    public void reqVerification(String controller, int type) {
         RxObserver<String> verifyOb = new RxObserver<String>(getView().getContext()) {
             @Override
             protected void onStart() {
@@ -35,7 +35,7 @@ public class EmailVerifyPresenter<V extends IEmailVerifyView> extends BasePresen
         };
 
         mCompositeDisposable.add(
-                emailVerifyModel.getVerification()
+                emailVerifyModel.getVerification(controller, getView().getEmail(), type)
                         .subscribeWith(verifyOb)
         );
 

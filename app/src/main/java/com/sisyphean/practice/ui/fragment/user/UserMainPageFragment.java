@@ -27,7 +27,7 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
 
     private TextView tv_simple_name;
     private TextView tv_name;
-    private TextView tv_ustd;
+    private TextView tv_usdt;
 
     public static Fragment getInstance() {
         UserMainPageFragment userMainPageFragment = new UserMainPageFragment();
@@ -68,7 +68,7 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
 
         tv_simple_name = rootView.findViewById(R.id.tv_simple_name);
         tv_name = rootView.findViewById(R.id.tv_name);
-        tv_ustd = rootView.findViewById(R.id.tv_ustd);
+        tv_usdt = rootView.findViewById(R.id.tv_usdt);
     }
 
     @Override
@@ -159,8 +159,8 @@ public class UserMainPageFragment extends BaseFragment<UserMainPagePresenter> im
     }
 
     @Override
-    public void setUSDT(float usdt) {
-        tv_ustd.setText(String.valueOf(usdt));
+    public void setUSDT(String usdt) {
+        tv_usdt.setText(String.format(getString(R.string.usdt_balance), usdt));
     }
 
     @Override

@@ -31,7 +31,8 @@
     <!-- 充值提现 -->
     <string name="title_recharge">充值USDT</string>
     <string name="title_withdraw">提现</string>
-    <string name="ustd_addr_hint">34位的usdt地址</string>
+    <string name="usdt_addr_hint">34位的usdt地址</string>
+    <string name="usdt_balance">%1$s USDT</string>
     <string name="copy">复制</string>
     <string name="number">数量</string>
     <string name="ustd">USDT</string>
