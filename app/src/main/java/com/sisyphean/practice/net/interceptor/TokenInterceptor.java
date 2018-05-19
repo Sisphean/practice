@@ -28,7 +28,10 @@ public class TokenInterceptor implements Interceptor {
 
         if (isPostForm(request)) {
             FormBody.Builder formBodyBuilder = new FormBody.Builder();
+            long startTime = System.currentTimeMillis();
+            Log.d(getClass().getSimpleName(), "getToken startTime = " + System.currentTimeMillis());
             String token = getToken();
+            Log.d(getClass().getSimpleName(), "getToken duringTime = " + (System.currentTimeMillis() - startTime));
             if (!TextUtils.isEmpty(token)) {
                 formBodyBuilder.add("token", token);
             }
@@ -85,7 +88,6 @@ public class TokenInterceptor implements Interceptor {
     }
 
     private String getToken() {
-        Log.d(getClass().getSimpleName(), "getToken is called , curThread = " + Thread.currentThread());
         String loginJson = (String) SPUtil.getValue(Constant.KEY_LOGIN_INFO, "");
         Log.d(getClass().getSimpleName(), "loginJson = " + loginJson);
         if (!TextUtils.isEmpty(loginJson)) {

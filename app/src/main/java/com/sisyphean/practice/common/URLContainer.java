@@ -2,7 +2,7 @@ package com.sisyphean.practice.common;
 
 public class URLContainer {
 
-    public final static String BASE_URL = "";
+    public final static String BASE_URL = "https://dbshop.bitsocs.com/";
 
     /**
      * 注册
@@ -34,4 +34,9 @@ public class URLContainer {
      * 用户中心
      */
     public static final String USER_MAIN_PAGE_URL = "";
+
+    /**
+     * 身份认证
+     */
+    public static final String AUTH_URL = "identity";
 }

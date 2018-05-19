@@ -14,6 +14,12 @@ public class LoginModel extends BaseModel implements ILoginModel {
 
     public Observable<ResponseBean<UserBean>> userLogin(String email, String password) {
         return doRequest().userLogin(email, password)
+                .doOnNext(new Consumer<ResponseBean<UserBean>>() {
+                    @Override
+                    public void accept(ResponseBean<UserBean> userBeanResponseBean) throws Exception {
+                        StorageUtil.put("test.txt", userBeanResponseBean);
+                    }
+                })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
 

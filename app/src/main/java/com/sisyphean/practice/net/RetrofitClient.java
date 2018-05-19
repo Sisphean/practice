@@ -50,6 +50,13 @@ public class RetrofitClient {
         return builder.build();
     }
 
+    public static void getDefault() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(URLContainer.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        api = retrofit.create(Api.class);
+    }
 
 
     public static Api getApi() {
