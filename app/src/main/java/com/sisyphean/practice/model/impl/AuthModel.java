@@ -10,18 +10,18 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AuthModel extends UploadModel {
 
-    public static final int SWITH_REQUEST = 0;
-    public static final int SWITH_SUBMIT = 1;
+    public static final int SWITCH_REQUEST = 0;
+    public static final int SWITCH_SUBMIT = 1;
 
     public Observable<ResponseBean<AuthBean>> reqAuthInfo() {
-        return doRequest().reqAuthInfo()
+        return doRequest().reqAuthInfo(SWITCH_REQUEST)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
 
     public Observable<ResponseBean<String>> userAuthenticate(String trueName, String idCardNum, String justUrl, String backUrl) {
-        return doRequest().userAuthenticate(SWITH_SUBMIT, trueName, idCardNum, justUrl, backUrl)
+        return doRequest().userAuthenticate(SWITCH_SUBMIT, trueName, idCardNum, justUrl, backUrl)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

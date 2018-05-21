@@ -13,7 +13,7 @@ import com.sisyphean.practice.R;
 import com.sisyphean.practice.presenter.BasePresenter;
 import com.sisyphean.practice.utils.ToastUtil;
 
-public abstract class BaseToolBarActivity<P extends BasePresenter> extends BaseActivity implements View.OnClickListener {
+public abstract class BaseToolBarActivity<P extends BasePresenter> extends BaseActivity<P> implements View.OnClickListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

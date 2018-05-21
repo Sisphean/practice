@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include layout="@layout/common_toolbar" />
@@ -51,12 +52,14 @@
                 android:textSize="@dimen/text_size_normal"
                 android:visibility="gone" />
 
-            <FrameLayout
+            <com.sisyphean.practice.widget.RatioLayout
                 android:id="@+id/justurl_group"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
+                app:ratio="1.6"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/shape_bg_border_corner">
+                android:background="@drawable/shape_bg_border_corner"
+                android:padding="1dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -68,14 +71,22 @@
                     android:textColor="@color/text_light_black"
                     android:textSize="@dimen/text_size_normal" />
 
-            </FrameLayout>
+                <ImageView
+                    android:id="@+id/iv_card_just"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
 
-            <FrameLayout
+            </com.sisyphean.practice.widget.RatioLayout>
+
+            <com.sisyphean.practice.widget.RatioLayout
                 android:id="@+id/backurl_group"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
+                app:ratio="1.6"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/shape_bg_border_corner">
+                android:background="@drawable/shape_bg_border_corner"
+                android:padding="1dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -87,7 +98,13 @@
                     android:textColor="@color/text_light_black"
                     android:textSize="@dimen/text_size_normal" />
 
-            </FrameLayout>
+                <ImageView
+                    android:id="@+id/iv_card_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+
+            </com.sisyphean.practice.widget.RatioLayout>
 
             <Button
                 android:id="@+id/btn_submit"

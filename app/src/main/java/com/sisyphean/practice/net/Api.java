@@ -110,11 +110,11 @@ public interface Api {
      */
     @POST(URLContainer.AUTH_URL)
     @FormUrlEncoded
-    Observable<ResponseBean<AuthBean>> reqAuthInfo();
+    Observable<ResponseBean<AuthBean>> reqAuthInfo(@Field("switch") int swt);
 
     /**
      * 提交认证信息
-     * @param swith 开关：0 获取是否已提交认证， 1 提交认证数据
+     * @param swt 开关：0 获取是否已提交认证， 1 提交认证数据
      * @param trueName
      * @param idCardNum
      * @param justUrl
@@ -123,7 +123,7 @@ public interface Api {
      */
     @POST(URLContainer.AUTH_URL)
     @FormUrlEncoded
-    Observable<ResponseBean<String>> userAuthenticate(@Field("swith") int swith,
+    Observable<ResponseBean<String>> userAuthenticate(@Field("switch") int swt,
                                                       @Field("true_name") String trueName,
                                                       @Field("id_card") String idCardNum,
                                                       @Field("id_card_just") String justUrl,

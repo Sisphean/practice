@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.logon.RegisterActivity"/>
+        <activity android:name=".ui.activity.logon.RegisterActivity" />
         <activity android:name=".ui.activity.logon.ResetPwdActivity" />
         <activity android:name=".ui.activity.user.RechargeActivity" />
         <activity android:name=".ui.activity.user.WithdrawActivity" />
@@ -41,6 +41,16 @@
         <activity android:name=".ui.activity.user.RecordActivity" />
         <activity android:name=".ui.activity.user.MyOrdersActivity" />
         <activity android:name=".ui.activity.user.OrdersActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.sisyphean.practice.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_public" />
+        </provider>
     </application>
 
 </manifest>
