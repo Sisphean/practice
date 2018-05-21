@@ -13,14 +13,13 @@ import com.sisyphean.practice.view.ISplashView;
 public class SplashActivity extends BaseActivity<SplashPresenter> implements ISplashView {
 
     private Handler handler;
-    private int countdown = 5;
+    private int countdown = 3;
     private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-
+        setSwipeBackEnable(false);
         initView();
 
         handler = new Handler();
@@ -40,8 +39,14 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
         }, 1000);
     }
 
-    private void initView() {
-        textView = findViewById(R.id.textView);
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_splash;
+    }
+
+    @Override
+    protected void initView() {
+        textView = (TextView) findViewById(R.id.textView);
     }
 
     @Override
@@ -67,4 +72,5 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
 }

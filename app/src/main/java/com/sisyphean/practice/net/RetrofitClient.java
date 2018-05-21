@@ -1,8 +1,11 @@
 package com.sisyphean.practice.net;
 
+import com.sisyphean.practice.BuildConfig;
 import com.sisyphean.practice.common.URLContainer;
+import com.sisyphean.practice.net.interceptor.TokenInterceptor;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -34,10 +37,27 @@ public class RetrofitClient {
     }
 
     private OkHttpClient initOkHttpClient() {
-        return new OkHttpClient.Builder()
-//                .addInterceptor()
-                .build();
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        TokenInterceptor tokenInterceptor = new TokenInterceptor();
+        builder.addInterceptor(tokenInterceptor);
+
+        if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            builder.addInterceptor(httpLoggingInterceptor);
+        }
+        return builder.build();
     }
+
+    public static void getDefault() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(URLContainer.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        api = retrofit.create(Api.class);
+    }
+
 
     public static Api getApi() {
         if (api == null) {

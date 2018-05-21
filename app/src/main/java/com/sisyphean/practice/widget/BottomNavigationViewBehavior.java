@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 public class BottomNavigationViewBehavior extends CoordinatorLayout.Behavior<View> {
@@ -17,12 +18,26 @@ public class BottomNavigationViewBehavior extends CoordinatorLayout.Behavior<Vie
     }
 
     @Override
+    public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
+        Log.d("nestedscroll", "view = " + child.toString() + " | dependency = " + dependency.toString());
+        return super.layoutDependsOn(parent, child, dependency);
+    }
+
+    @Override
+    public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
+        Log.d("nestedscroll", "dependency hight = " + dependency.getY());
+        return super.onDependentViewChanged(parent, child, dependency);
+    }
+
+    @Override
     public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
+        Log.d("nestedscroll", "axes = " + axes);
         return axes == ViewCompat.SCROLL_AXIS_VERTICAL;
     }
 
     @Override
     public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
+        Log.d("nestedscroll", "dx = " + dx);
         if (dy < 0) {
             //向下滑动 显示BottomNavigationView
             if (showAnimator == null) {

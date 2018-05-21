@@ -9,9 +9,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class HomeModel extends BaseModel {
 
-    public Observable<ResponseBean<ArticlesBean>> reqArticleList(int curPage) {
+    /*public Observable<ResponseBean<ArticlesBean>> reqArticleList(int curPage) {
         return doRequest().reqArticleList(curPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
-    }
+    }*/
 }

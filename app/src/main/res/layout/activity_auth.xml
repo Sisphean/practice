@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include layout="@layout/common_toolbar" />
@@ -17,6 +18,7 @@
             android:padding="30dp">
 
             <EditText
+                android:id="@+id/et_truename"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -28,6 +30,7 @@
             <include layout="@layout/layout_line" />
 
             <EditText
+                android:id="@+id/et_idcard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -39,11 +42,24 @@
 
             <include layout="@layout/layout_line" />
 
-            <FrameLayout
+            <TextView
+                android:id="@+id/tv_auth_status"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:padding="8dp"
+                android:text="用户已认证"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="gone" />
+
+            <com.sisyphean.practice.widget.RatioLayout
+                android:id="@+id/justurl_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ratio="1.6"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/shape_bg_border_corner">
+                android:background="@drawable/shape_bg_border_corner"
+                android:padding="1dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -55,13 +71,22 @@
                     android:textColor="@color/text_light_black"
                     android:textSize="@dimen/text_size_normal" />
 
-            </FrameLayout>
+                <ImageView
+                    android:id="@+id/iv_card_just"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
 
-            <FrameLayout
+            </com.sisyphean.practice.widget.RatioLayout>
+
+            <com.sisyphean.practice.widget.RatioLayout
+                android:id="@+id/backurl_group"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
+                app:ratio="1.6"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/shape_bg_border_corner">
+                android:background="@drawable/shape_bg_border_corner"
+                android:padding="1dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,13 +98,20 @@
                     android:textColor="@color/text_light_black"
                     android:textSize="@dimen/text_size_normal" />
 
-            </FrameLayout>
+                <ImageView
+                    android:id="@+id/iv_card_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+
+            </com.sisyphean.practice.widget.RatioLayout>
 
             <Button
+                android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
-                android:layout_marginTop="25dp"
                 android:layout_marginBottom="30dp"
+                android:layout_marginTop="25dp"
                 android:background="@drawable/shape_bg_btn_primary"
                 android:text="@string/auth"
                 android:textColor="@color/text_white"

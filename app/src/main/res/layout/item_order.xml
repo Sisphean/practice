@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:paddingBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="状态 未付款"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="数量 1000.1203"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="类型 买入"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单价 6.47"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="金额 500000000"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="时间 18-5-6 14:25:50"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_bg_btn_primary"
+                android:text="查看"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_tiny" />
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_line" />
+
+</LinearLayout>

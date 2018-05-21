@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:background="@null"
-            android:hint="@string/ustd_addr_hint"
+            android:hint="@string/usdt_addr_hint"
             android:padding="8dp"
             android:textSize="@dimen/text_size_normal" />
 

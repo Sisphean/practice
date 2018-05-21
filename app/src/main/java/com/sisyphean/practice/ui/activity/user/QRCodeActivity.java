@@ -9,9 +9,13 @@ import com.sisyphean.practice.ui.activity.BaseActivity;
 public class QRCodeActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qr_code);
+    protected void initView() {
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_qr_code;
     }
 
     @Override

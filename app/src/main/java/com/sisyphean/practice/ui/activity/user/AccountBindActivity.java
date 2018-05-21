@@ -12,20 +12,16 @@ import com.sisyphean.practice.ui.activity.BaseToolBarActivity;
 
 public class AccountBindActivity extends BaseToolBarActivity {
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initView();
-    }
 
-    private void initView() {
-        Spinner spinner = findViewById(R.id.spinner);
+    @Override
+    protected void initView() {
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
         String[] mItems = {"java", "php", "python", "C++"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        EditText editText = findViewById(R.id.et_account);
+        EditText editText = (EditText) findViewById(R.id.et_account);
     }
 
     @Override

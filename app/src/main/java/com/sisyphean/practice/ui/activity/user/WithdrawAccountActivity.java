@@ -18,12 +18,6 @@ import java.util.List;
 public class WithdrawAccountActivity extends BaseToolBarActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initView();
-    }
-
-    @Override
     protected int getMenuId() {
         return R.menu.menu_add;
     }
@@ -36,8 +30,9 @@ public class WithdrawAccountActivity extends BaseToolBarActivity {
         }
     }
 
-    private void initView() {
-        RecyclerView recyclerView = findViewById(R.id.recycler_layout);
+    @Override
+    protected void initView() {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_layout);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         WithdrawAccountAdapter withdrawAccountAdapter = new WithdrawAccountAdapter(this);

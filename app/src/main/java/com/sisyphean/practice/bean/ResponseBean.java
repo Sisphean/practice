@@ -2,47 +2,35 @@ package com.sisyphean.practice.bean;
 
 public class ResponseBean<T> {
 
-
     /**
-     * data : {"collectIds":[],"email":"","icon":"","id":4529,"password":"123456","type":0,"username":"Sisyphean"}
-     * errorCode : 0
-     * errorMsg :
+     * info : {"uid":"4","email":"bluechinaz1@qq.com","token":"28eb7e53f4c387bbe9ce7bdd483eacc8","nickname":"bluechinaz1"}
+     * status : 1
      */
 
-    private T data;
-    private int errorCode;
-    private String errorMsg;
+    private T info;
+    private int status;
 
-    public T getData() {
-        return data;
+    public T getInfo() {
+        return info;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setInfo(T info) {
+        this.info = info;
     }
 
-    public int getErrorCode() {
-        return errorCode;
+    public int getStatus() {
+        return status;
     }
 
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
         return "ResponseBean{" +
-                "data=" + data +
-                ", errorCode=" + errorCode +
-                ", errorMsg='" + errorMsg + '\'' +
+                "info=" + info +
+                ", status=" + status +
                 '}';
     }
 }

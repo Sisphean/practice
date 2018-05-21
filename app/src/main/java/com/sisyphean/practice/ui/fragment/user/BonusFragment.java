@@ -33,6 +33,27 @@ public class BonusFragment extends BaseFragment {
         datas.add(new BonusBean());
         datas.add(new BonusBean());
         datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
+        datas.add(new BonusBean());
         bonusAdapter.updateDatas(datas);
     }
 

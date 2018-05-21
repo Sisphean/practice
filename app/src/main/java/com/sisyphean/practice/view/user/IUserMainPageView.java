@@ -10,15 +10,15 @@ public interface IUserMainPageView extends IView {
 
     void toAuthActivity();
 
-    void toRechargeLogActivity();
+    void toRechargeRecordActivity();
 
-    void toWithdrawLogActivity();
+    void toWithdrawRecordActivity();
 
-    void toTradeLogActivity();
+    void toTradeRecordActivity();
 
     void toWithdrawAccountActivity();
 
-    void toMyTradeActivity();
+    void toMyOrdersActivity();
 
     void toPromoteActivity();
 
@@ -28,5 +28,5 @@ public interface IUserMainPageView extends IView {
 
     void setName(String name);
 
-    void setUstd(float ustd);
+    void setUSDT(String usdt);
 }

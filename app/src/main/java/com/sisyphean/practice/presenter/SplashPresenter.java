@@ -1,11 +1,7 @@
 package com.sisyphean.practice.presenter;
 
-import android.util.Log;
-
-import com.sisyphean.practice.bean.UserBean;
 import com.sisyphean.practice.common.Constant;
 import com.sisyphean.practice.utils.SPUtil;
-import com.sisyphean.practice.utils.StorageUtil;
 import com.sisyphean.practice.view.ISplashView;
 
 public class SplashPresenter extends BasePresenter<ISplashView> {

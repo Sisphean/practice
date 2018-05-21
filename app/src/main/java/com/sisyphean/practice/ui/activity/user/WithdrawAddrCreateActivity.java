@@ -15,6 +15,11 @@ public class WithdrawAddrCreateActivity extends BaseToolBarActivity {
     }
 
     @Override
+    protected void initView() {
+
+    }
+
+    @Override
     protected int getMenuId() {
         return 0;
     }

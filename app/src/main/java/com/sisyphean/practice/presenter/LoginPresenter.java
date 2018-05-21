@@ -7,6 +7,7 @@ import com.sisyphean.practice.common.Constant;
 import com.sisyphean.practice.model.impl.LoginModel;
 import com.sisyphean.practice.net.RxObserver;
 import com.sisyphean.practice.utils.GsonUtil;
+import com.sisyphean.practice.utils.RegexUtil;
 import com.sisyphean.practice.utils.SPUtil;
 import com.sisyphean.practice.view.logon.ILoginView;
 
@@ -21,7 +22,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
 
     public void userLogin() {
 
-        if (validateForm()) {
+        if (checkSubmit()) {
             RxObserver<UserBean> loginObserver = new RxObserver<UserBean>(getView().getContext()) {
 
                 @Override
@@ -40,36 +41,40 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
                 @Override
                 protected void onFail(int errorCode, String errorMsg) {
                     getView().hideLoading();
-                    getView().loginFailHandle();
+                    getView().loginFailHandle(errorCode, errorMsg);
                 }
             };
 
             mCompositeDisposable.add(
-                    loginModel.userLogin(getView().getUsername(), getView().getPassword())
+                    loginModel.userLogin(getView().getEmail(), getView().getPassword())
                             .subscribeWith(loginObserver)
             );
         }
 
     }
 
-    private boolean validateForm() {
-        if (TextUtils.isEmpty(getView().getUsername())) {
-            getView().validateAccount();
+    private boolean checkSubmit() {
+        String email = getView().getEmail();
+        String password = getView().getPassword();
+        if (TextUtils.isEmpty(email)) {
+            getView().showToast("请填写邮箱");
             return false;
         }
 
-        if (TextUtils.isEmpty(getView().getPassword())) {
-            getView().validatePwd();
+        if (TextUtils.isEmpty(password)) {
+            getView().showToast("请填写密码");
             return false;
         }
 
+        if (!RegexUtil.isEmail(email)) {
+            getView().showToast("邮箱格式有误");
+            return false;
+        }
 
         return true;
     }
 
     private void saveLoginStatus(UserBean data) {
-//        SPUtil.putValue(Constant.KEY_USERNAME, data.getUsername());
-//        SPUtil.putValue(Constant.KEY_PASSWORD, data.getPassword());
         String json = GsonUtil.toJson(data);
         SPUtil.putValue(Constant.KEY_LOGIN_INFO, json);
         SPUtil.putValue(Constant.KEY_LOGINSTATUS, true);

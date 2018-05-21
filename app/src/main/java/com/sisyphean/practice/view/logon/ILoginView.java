@@ -4,7 +4,7 @@ import com.sisyphean.practice.view.IView;
 
 public interface ILoginView extends IView {
 
-    String getUsername();
+    String getEmail();
 
     String getPassword();
 
@@ -12,13 +12,7 @@ public interface ILoginView extends IView {
 
     void toHomeActivity();
 
-    void loginFailHandle();
-
-    void clear();
-
-    void validateAccount();
-
-    void validatePwd();
+    void loginFailHandle(int errorCode, String errorMsg);
 
     void toRegisterActivity();
 

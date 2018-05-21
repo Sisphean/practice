@@ -53,12 +53,17 @@ public abstract class RxObserver<T> extends DisposableObserver<ResponseBean<T>> 
 
 
     private void responseHandle(ResponseBean<T> response) {
-        switch (response.getErrorCode()) {
-            case 0:
-                onSuccess(response.getData());
+        switch (response.getStatus()) {
+            case 1:
+                onSuccess(response.getInfo());
                 break;
             default:
-                onFail(response.getErrorCode(), response.getErrorMsg());
+                T errorMsg = response.getInfo();
+                if (errorMsg instanceof String) {
+                    onFail(response.getStatus(), (String) errorMsg);
+                } else {
+                    onFail(response.getStatus(), null);
+                }
                 break;
         }
     }
@@ -66,20 +71,21 @@ public abstract class RxObserver<T> extends DisposableObserver<ResponseBean<T>> 
     private void exceptionHandle(Throwable e) {
         if (e instanceof ConnectException
                 || e instanceof UnknownHostException) {
-            Toast.makeText(context, "网络连接异常", Toast.LENGTH_SHORT).show();
+            onFail(-1, "网络连接异常");
         } else if (e instanceof InterruptedException) {
-            Toast.makeText(context, "连接超时", Toast.LENGTH_SHORT).show();
+            onFail(-2, "连接超时");
         } else if (e instanceof JsonParseException
                 || e instanceof JSONException
                 || e instanceof ParseException) {
-            Toast.makeText(context, "网络数据解析失败", Toast.LENGTH_SHORT).show();
+            onFail(-3, "网络数据解析失败");
         } else if (e instanceof SocketTimeoutException) {
-            Toast.makeText(context, "请求超时", Toast.LENGTH_SHORT).show();
+            onFail(-4, "请求超时");
         } else if (e instanceof UnknownError) {
-            Toast.makeText(context, "未知错误", Toast.LENGTH_SHORT).show();
+            onFail(-5, "未知错误");
         } else {
-            Toast.makeText(context, "未知错误", Toast.LENGTH_SHORT).show();
+            onFail(-5, "未知错误");
         }
+
 
     }
 

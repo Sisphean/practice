@@ -15,20 +15,34 @@ import com.sisyphean.practice.ui.fragment.user.RecordsFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RechargeLogActivity extends BaseToolBarActivity {
+public class RecordActivity extends BaseToolBarActivity {
 
+    public static final String KEY_TYPE = "type";
+    public static final int TYPE_RECHARGE = 0;
+    public static final int TYPE_WITHDRAW = 1;
     private List<Fragment> mFragments = new ArrayList<>();
-    private String[] mFragmentTabs = {"卖出", "提现"};
+    private String[] mFragmentTabs = null;
+    private int type;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        type = getIntent().getIntExtra(KEY_TYPE, -1);
+        if (type < 0) {
+            throw new IllegalArgumentException("invalid type");
+        }
         super.onCreate(savedInstanceState);
-        initView();
     }
 
-    private void initView() {
-        ViewPager mViewPager = findViewById(R.id.viewpager);
-        SlidingTabLayout mIndicator = findViewById(R.id.viewpager_indicator);
+    @Override
+    protected void initView() {
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        SlidingTabLayout mIndicator = (SlidingTabLayout) findViewById(R.id.viewpager_indicator);
+
+        if (type == TYPE_RECHARGE) {
+            mFragmentTabs = new String[]{"买入", "充值"};
+        } else if (type == TYPE_WITHDRAW) {
+            mFragmentTabs = new String[]{"卖出", "提现"};
+        }
 
         mFragments.add(RecordsFragment.getInstance());
         mFragments.add(RecordsFragment.getInstance());
@@ -50,6 +64,8 @@ public class RechargeLogActivity extends BaseToolBarActivity {
                 return mFragmentTabs[position];
             }
         });
+
+        mIndicator.setViewPager(mViewPager);
     }
 
     @Override
@@ -64,7 +80,12 @@ public class RechargeLogActivity extends BaseToolBarActivity {
 
     @Override
     protected int setToolbarTitle() {
-        return R.string.tab_record_recharge;
+        if (type == TYPE_RECHARGE) {
+            return R.string.tab_record_recharge;
+        } else if (type == TYPE_WITHDRAW) {
+            return R.string.tab_record_withdraw;
+        }
+        return 0;
     }
 
     @Override

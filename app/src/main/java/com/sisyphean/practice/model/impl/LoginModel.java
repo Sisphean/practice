@@ -12,14 +12,12 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LoginModel extends BaseModel implements ILoginModel {
 
-    public Observable<ResponseBean<UserBean>> userLogin(String username, String password) {
-        return doRequest().userLogin(username, password)
+    public Observable<ResponseBean<UserBean>> userLogin(String email, String password) {
+        return doRequest().userLogin(email, password)
                 .doOnNext(new Consumer<ResponseBean<UserBean>>() {
                     @Override
-                    public void accept(ResponseBean<UserBean> response) throws Exception {
-                        if (response != null && response.getErrorCode() == 0) {
-                            StorageUtil.put("test.txt", response.getData());
-                        }
+                    public void accept(ResponseBean<UserBean> userBeanResponseBean) throws Exception {
+                        StorageUtil.put("test.txt", userBeanResponseBean);
                     }
                 })
                 .subscribeOn(Schedulers.io())

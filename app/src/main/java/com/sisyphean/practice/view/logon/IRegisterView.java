@@ -12,9 +12,9 @@ public interface IRegisterView extends IView {
 
     String getEmailRecommend();
 
-    void registerSuccess();
+    void registerSuccess(String data);
 
-    void registerFail();
+    void registerFail(int errorCode, String errorMsg);
 
     void setTitle();
 }

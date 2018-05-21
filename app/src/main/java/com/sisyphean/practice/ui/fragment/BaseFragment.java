@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.sisyphean.practice.R;
 import com.sisyphean.practice.presenter.BasePresenter;
+import com.sisyphean.practice.utils.ToastUtil;
 import com.sisyphean.practice.view.IView;
 
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements IView {
@@ -166,6 +167,17 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         if (loadingDialog != null && loadingDialog.isShowing()) {
             loadingDialog.dismiss();
         }
+
+    }
+
+
+    @Override
+    public void showToast(String msg) {
+        ToastUtil.show(getContext(), msg);
+    }
+
+    @Override
+    public void setTitle() {
 
     }
 }

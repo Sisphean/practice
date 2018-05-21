@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sisyphean.practice.widget.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:id="@+id/pay_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付方式"
+                    android:textColor="@color/text_light_black"
+                    android:textSize="@dimen/text_size_small" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_yinlian" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_alipay" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_weixin" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="数量 1000.1232"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="142dp"
+                android:text="单价 1000.1232"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/tv_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="142dp"
+                android:text="限额 1000.1232"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="142dp"
+                android:text="类型 买入"
+                android:textColor="@color/text_light_black"
+                android:textSize="@dimen/text_size_small" />
+
+            <Button
+                android:id="@+id/btn_order"
+                android:layout_width="50dp"
+                android:layout_height="18dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="142dp"
+                android:background="@drawable/shape_bg_btn_primary"
+                android:text="订单"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_tiny" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/layout_line" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/text_size_normal" />
+    </LinearLayout>
+
+
+</com.sisyphean.practice.widget.SwipeLayout>
