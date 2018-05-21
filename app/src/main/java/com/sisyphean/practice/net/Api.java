@@ -82,7 +82,7 @@ public interface Api {
      * @return
      */
     @FormUrlEncoded
-    @POST("https://dbshop.bitsocs.com")
+    @POST("")
     Observable<ResponseBean<UserBean>> reqUserMainPageInfo(@Field("default") String def);
 
 

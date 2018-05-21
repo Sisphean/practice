@@ -3,8 +3,8 @@ package com.sisyphean.practice.presenter;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.widget.ImageView;
+import android.graphics.Matrix;
+import android.util.Log;
 
 import com.huantansheng.easyphotos.EasyPhotos;
 import com.sisyphean.practice.bean.AuthBean;
@@ -14,18 +14,10 @@ import com.sisyphean.practice.net.RxObserver;
 import com.sisyphean.practice.ui.activity.user.AuthActivity;
 import com.sisyphean.practice.view.user.IAuthView;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-import io.reactivex.Flowable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.RequestBody;
-import top.zibin.luban.Luban;
 
 public class AuthPresenter extends BasePresenter<IAuthView> {
 
@@ -86,13 +78,14 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
         return null;
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(final int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
-            ArrayList<String> photosPaths = data.getStringArrayListExtra(EasyPhotos.RESULT_PATHS);
+            final ArrayList<String> photosPaths = data.getStringArrayListExtra(EasyPhotos.RESULT_PATHS);
 
             if (photosPaths.size() > 0) {
+
                 String photoPath = photosPaths.get(0);
-                Bitmap bitmap = createBitmap(photosPaths);
+                Bitmap bitmap = createBitmap(photoPath);
                 if (requestCode == AuthActivity.REQUESTCODE_JUST) {
                     mJustSelectedPhotoPaths.clear();
                     mJustSelectedPhotoPaths.addAll(photosPaths);
@@ -107,36 +100,27 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
         }
     }
 
-    private Bitmap createBitmap(List<String> photosPaths) {
-        mCompositeDisposable.add(
-                Flowable.just(photosPaths)
-                .subscribeOn(Schedulers.io())
-                .map(new Function<List<String>, List<File>>() {
-                    @Override
-                    public List<File> apply(List<String> list) throws Exception {
-                        return Luban.with(getView().getContext())
-                                .load(list)
-                                .get();
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<File>>() {
-                    @Override
-                    public void accept(List<File> files) throws Exception {
-                        File file = files.get(0);
-                        String filePath = file.getAbsolutePath();
-                        Bitmap bitmap = BitmapFactory.decodeFile(filePath);
-                    }
-                })
-        );
-        /*Bitmap bitmap = ImageUtils.decodeBitmapFromUrl(photoPath, 640, 260);
+    private Bitmap createBitmap(String photoPath) {
+
+        Bitmap bitmap = ImageUtils.decodeBitmapFromUrl(photoPath, 640, 400);
         int imgWidth = bitmap.getWidth();
         int imgHeight = bitmap.getHeight();
-        if (imgWidth < imgHeight) {
-           return ImageUtils.rotateImage(bitmap, 90);
+        Log.d(getClass().getSimpleName(), "width = " + imgWidth + "| height = " + imgHeight);
+        float widthScale = 640.0f / imgWidth;
+        float heightScale = 400.0f / imgHeight;
+        Log.d(getClass().getSimpleName(), "widthScale = " + widthScale + "| heightScale = " + heightScale);
+        Matrix matrix = new Matrix();
+        if (imgWidth < imgHeight) {//竖
+            matrix.setScale(widthScale, widthScale);
+        } else {
+            matrix.setScale(heightScale, heightScale);
         }
-        return BitmapFactory.decodeFile(photoPath);*/
-        return null;
+
+        Bitmap matrixBitmap = Bitmap.createBitmap(bitmap, 0, 0, imgWidth, imgHeight, matrix, true);
+        if (imgWidth < imgHeight) {
+            return ImageUtils.rotateImage(matrixBitmap, 90);
+        }
+        return matrixBitmap;
     }
 
     public ArrayList<String> getJustSelectedPhotoPaths() {

@@ -2,7 +2,7 @@ package com.sisyphean.practice.common;
 
 public class URLContainer {
 
-    public final static String BASE_URL = "https://dbshop.bitsocs.com/";
+    public final static String BASE_URL = "";
 
     /**
      * 注册
