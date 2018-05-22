@@ -13,4 +13,8 @@ public interface IAuthView extends IView {
     void showBackImg(Bitmap backImg);
 
     void showJustImg(Bitmap justImg);
+
+    int getGroupHeight();
+
+    int getGroupWidth();
 }

@@ -87,13 +87,7 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
         super.onClick(v);
         switch (v.getId()){
             case R.id.btn_submit:
-                /*saveBitmapFile(BitmapFactory.decodeResource(getResources(), R.drawable.ic_log_withdraw));
-                File file  = StorageUtil.getExternalStorageDir("test.png");
 
-                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                MultipartBody.Part imageBodyPart = MultipartBody.Part.createFormData("imgfile", file.getName(), imageBody);
-
-                RetrofitClient.getApi().uploadFile(imageBodyPart);*/
 
                 break;
 
@@ -156,5 +150,15 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
     @Override
     public void showJustImg(Bitmap justImg) {
         iv_just.setImageBitmap(justImg);
+    }
+
+    @Override
+    public int getGroupHeight() {
+        return just_group.getHeight();
+    }
+
+    @Override
+    public int getGroupWidth() {
+        return just_group.getWidth();
     }
 }

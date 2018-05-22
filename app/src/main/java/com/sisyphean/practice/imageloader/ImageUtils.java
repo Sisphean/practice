@@ -3,7 +3,15 @@ package com.sisyphean.practice.imageloader;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.support.annotation.Nullable;
 import android.util.Log;
+
+import com.sisyphean.practice.utils.StorageUtil;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ImageUtils {
 
@@ -44,6 +52,20 @@ public class ImageUtils {
         } else {
             return null;
         }
+    }
+
+    public static File saveBitmapFile(@Nullable Bitmap bitmap, String fileName){
+        if (bitmap == null) return null;
+        File file=StorageUtil.getExternalStorageDir("shopImg", fileName);//将要保存图片的路径
+        try {
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            bos.flush();
+            bos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
     }
 
 }

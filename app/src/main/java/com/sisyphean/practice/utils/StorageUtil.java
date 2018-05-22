@@ -1,6 +1,7 @@
 package com.sisyphean.practice.utils;
 
 import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.sisyphean.practice.App;
@@ -44,6 +45,38 @@ public class StorageUtil {
             e.printStackTrace();
         }
         return file;
+    }
+
+    public static File getExternalStorageDir(String dir, String fileName) {
+        try {
+            File file;
+            if (TextUtils.isEmpty(dir)) {
+                File dirFile = App.getContext().getExternalFilesDir(null);
+                file = new File(dirFile, fileName);
+            } else {
+                File dirFile = new File(App.getContext().getExternalFilesDir(null), dir);
+                if (!dirFile.exists()) {
+                    if (!dirFile.mkdirs()) {
+                        throw  new RuntimeException("dir create fail");
+                    }
+                }
+                file = new File(dirFile, fileName);
+            }
+
+            if (!file.exists()) {
+                if (!file.exists()) {
+                    if (!file.createNewFile()) {
+                        throw new RuntimeException("file create fail");
+                    }
+                }
+            }
+            return file;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
     }
 
     /**
