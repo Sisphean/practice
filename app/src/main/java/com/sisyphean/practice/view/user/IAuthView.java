@@ -6,7 +6,7 @@ import com.sisyphean.practice.view.IView;
 
 public interface IAuthView extends IView {
 
-    void hideSubmit();
+    void hideSubmit(int status);
 
     void showSubmit();
 
@@ -17,4 +17,9 @@ public interface IAuthView extends IView {
     int getGroupHeight();
 
     int getGroupWidth();
+
+    String getTrueName();
+
+    String getIDCrad();
+
 }

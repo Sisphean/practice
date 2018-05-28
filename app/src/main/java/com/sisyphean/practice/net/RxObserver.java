@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.JsonParseException;
+import com.google.gson.stream.MalformedJsonException;
 import com.sisyphean.practice.bean.ResponseBean;
 
 import org.json.JSONException;
@@ -33,7 +34,7 @@ public abstract class RxObserver<T> extends DisposableObserver<ResponseBean<T>> 
 
     @Override
     public void onNext(ResponseBean<T> response) {
-        Log.d("xxx", "ThreadName: " + Thread.currentThread() + " | response: " + response.toString());
+        Log.d(getClass().getSimpleName(), "ThreadName: " + Thread.currentThread() + " | response: " + response.toString());
         if (response == null) {
             onError(new UnknownError());
         } else {
@@ -69,6 +70,7 @@ public abstract class RxObserver<T> extends DisposableObserver<ResponseBean<T>> 
     }
 
     private void exceptionHandle(Throwable e) {
+        Log.d(getClass().getSimpleName(), "error message : " + e.toString());
         if (e instanceof ConnectException
                 || e instanceof UnknownHostException) {
             onFail(-1, "网络连接异常");
@@ -76,7 +78,8 @@ public abstract class RxObserver<T> extends DisposableObserver<ResponseBean<T>> 
             onFail(-2, "连接超时");
         } else if (e instanceof JsonParseException
                 || e instanceof JSONException
-                || e instanceof ParseException) {
+                || e instanceof ParseException
+                || e instanceof MalformedJsonException) {
             onFail(-3, "网络数据解析失败");
         } else if (e instanceof SocketTimeoutException) {
             onFail(-4, "请求超时");

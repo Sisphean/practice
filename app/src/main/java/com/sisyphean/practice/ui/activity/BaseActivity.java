@@ -64,12 +64,14 @@ public abstract class BaseActivity<P extends BasePresenter> extends SwipeBackAct
     public void showLoading(String msg) {
         if (loadingDialog == null) {
             loadingDialog = new ProgressDialog(this);
-            if (!TextUtils.isEmpty(msg)) {
-                loadingDialog.setMessage(msg);
-            }
             loadingDialog.setCancelable(true);
             loadingDialog.setCanceledOnTouchOutside(false);
         }
+
+        if (!TextUtils.isEmpty(msg)) {
+            loadingDialog.setMessage(msg);
+        }
+
         if (!loadingDialog.isShowing()) {
             loadingDialog.show();
         }

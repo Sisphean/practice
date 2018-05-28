@@ -57,6 +57,7 @@ public class ImageUtils {
     public static File saveBitmapFile(@Nullable Bitmap bitmap, String fileName){
         if (bitmap == null) return null;
         File file=StorageUtil.getExternalStorageDir("shopImg", fileName);//将要保存图片的路径
+        Log.d("file", "file:" + file.getAbsolutePath());
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);

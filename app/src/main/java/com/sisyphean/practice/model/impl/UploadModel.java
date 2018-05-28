@@ -12,15 +12,16 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class UploadModel extends BaseModel {
+    public static final String CONTROLLER_IDENTITY = "forget";
 
-    public Observable<ResponseBean<UploadBean>> uploadFile(MultipartBody.Part file) {
-        return doRequest().uploadFile(file)
+    public Observable<ResponseBean<UploadBean>> uploadFile(String controller, MultipartBody.Part file) {
+        return doRequest().uploadFile(controller, file)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<ResponseBean<UploadBean>> uploadImages(Map<String, RequestBody> imgMap) {
-        return doRequest().uploadImages(imgMap)
+    public Observable<ResponseBean<UploadBean>> uploadImages(String controller, Map<String, RequestBody> imgMap) {
+        return doRequest().uploadImages(controller, imgMap)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

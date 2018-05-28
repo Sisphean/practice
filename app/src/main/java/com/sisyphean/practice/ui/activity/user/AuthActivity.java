@@ -8,12 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.huantansheng.easyphotos.EasyPhotos;
 import com.sisyphean.practice.App;
 import com.sisyphean.practice.R;
+import com.sisyphean.practice.bean.AuthBean;
 import com.sisyphean.practice.imageloader.GlideEngine;
 import com.sisyphean.practice.presenter.AuthPresenter;
 import com.sisyphean.practice.ui.activity.BaseToolBarActivity;
@@ -35,6 +37,8 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
     private TextView tv_auth_status;
     private ImageView iv_just;
     private ImageView iv_back;
+    private EditText et_truename;
+    private EditText et_idcard;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
         tv_auth_status = (TextView) findViewById(R.id.tv_auth_status);
         iv_just = (ImageView) findViewById(R.id.iv_card_just);
         iv_back = (ImageView) findViewById(R.id.iv_card_back);
+        et_truename = (EditText) findViewById(R.id.et_truename);
+        et_idcard = (EditText) findViewById(R.id.et_idcard);
 
         btn_submit.setOnClickListener(this);
         just_group.setOnClickListener(this);
@@ -87,7 +93,7 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
         super.onClick(v);
         switch (v.getId()){
             case R.id.btn_submit:
-
+                mPresenter.userAuthenticate();
 
                 break;
 
@@ -108,18 +114,6 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
         }
     }
 
-    public void saveBitmapFile(Bitmap bitmap){
-        File file=new File(App.getContext().getExternalFilesDir(null), "test.png");//将要保存图片的路径
-        try {
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-            bos.flush();
-            bos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -127,8 +121,15 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
     }
 
     @Override
-    public void hideSubmit() {
+    public void hideSubmit(int status) {
         tv_auth_status.setVisibility(View.VISIBLE);
+        if (status == AuthBean.AUTH_STATUS_AUTHING) {
+            tv_auth_status.setText("审核中");
+        } else if (status == AuthBean.AUTH_STATUS_SUNCCESS) {
+            tv_auth_status.setText("身份已认证");
+        }
+        et_truename.setEnabled(false);
+        et_idcard.setEnabled(false);
         just_group.setVisibility(View.GONE);
         back_group.setVisibility(View.GONE);
         btn_submit.setVisibility(View.GONE);
@@ -137,6 +138,8 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
     @Override
     public void showSubmit() {
         tv_auth_status.setVisibility(View.GONE);
+        et_truename.setEnabled(true);
+        et_idcard.setEnabled(true);
         just_group.setVisibility(View.VISIBLE);
         back_group.setVisibility(View.VISIBLE);
         btn_submit.setVisibility(View.VISIBLE);
@@ -160,5 +163,15 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
     @Override
     public int getGroupWidth() {
         return just_group.getWidth();
+    }
+
+    @Override
+    public String getTrueName() {
+        return et_truename.getText().toString();
+    }
+
+    @Override
+    public String getIDCrad() {
+        return et_idcard.getText().toString();
     }
 }

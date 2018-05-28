@@ -91,18 +91,18 @@ public interface Api {
      * @param file
      * @return
      */
-    @POST("/auth/upload")
+    @POST(URLContainer.UPLOAD_URL)
     @Multipart
-    Observable<ResponseBean<UploadBean>> uploadFile(@Part MultipartBody.Part file);
+    Observable<ResponseBean<UploadBean>> uploadFile(@Path("controller") String controller, @Part MultipartBody.Part file);
 
     /**
      * 多图片上传
      * @param imgMap
      * @return
      */
-    @POST("/auth/upload")
+    @POST(URLContainer.UPLOAD_URL)
     @Multipart
-    Observable<ResponseBean<UploadBean>> uploadImages(@PartMap Map<String, RequestBody> imgMap);
+    Observable<ResponseBean<UploadBean>> uploadImages(@Path("controller") String controller, @PartMap Map<String, RequestBody> imgMap);
 
     /**
      * 获取认证信息

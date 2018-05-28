@@ -3,28 +3,39 @@ package com.sisyphean.practice.presenter;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.util.Log;
 
 import com.huantansheng.easyphotos.EasyPhotos;
+import com.sisyphean.practice.R;
 import com.sisyphean.practice.bean.AuthBean;
 import com.sisyphean.practice.bean.ResponseBean;
 import com.sisyphean.practice.bean.UploadBean;
 import com.sisyphean.practice.imageloader.ImageUtils;
 import com.sisyphean.practice.model.impl.AuthModel;
+import com.sisyphean.practice.model.impl.UploadModel;
 import com.sisyphean.practice.net.RxObserver;
 import com.sisyphean.practice.ui.activity.user.AuthActivity;
+import com.sisyphean.practice.utils.StorageUtil;
 import com.sisyphean.practice.view.user.IAuthView;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class AuthPresenter extends BasePresenter<IAuthView> {
@@ -33,6 +44,9 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
     private AuthModel authModel;
     public ArrayList<String> mJustSelectedPhotoPaths = new ArrayList<>();
     public ArrayList<String> mBackSelectedPhotoPaths = new ArrayList<>();
+    private Map<String, RequestBody> imgMap = new HashMap<>();
+    private MultipartBody.Part justImgPart;
+    private MultipartBody.Part backImgPart;
 
     public AuthPresenter() {
         authModel = new AuthModel();
@@ -52,8 +66,10 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
                 getView().hideLoading();
                 switch (data.getAuthCode()) {
                     case AuthBean.AUTH_STATUS_AUTHING:
+                        getView().hideSubmit(AuthBean.AUTH_STATUS_AUTHING);
+                        break;
                     case AuthBean.AUTH_STATUS_SUNCCESS:
-                        getView().hideSubmit();
+                        getView().hideSubmit(AuthBean.AUTH_STATUS_SUNCCESS);
                         break;
                     case AuthBean.AUTH_STATUS_FAIL:
                     case AuthBean.AUTH_STATUS_UNAUTH:
@@ -76,41 +92,83 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
     }
 
     public void userAuthenticate() {
-              /*saveBitmapFile(BitmapFactory.decodeResource(getResources(), R.drawable.ic_log_withdraw));
-                File file  = StorageUtil.getExternalStorageDir("test.png");
+        /*for (MultipartBody.Part part : imgs) {
+            mCompositeDisposable.add(
+                    authModel.uploadFile(UploadModel.CONTROLLER_IDENTITY, part)
+                            .subscribeWith(new RxObserver<UploadBean>(getView().getContext()) {
+                                @Override
+                                protected void onStart() {
+                                    super.onStart();
+                                    getView().showLoading("上传图片中...");
+                                }
 
-                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                MultipartBody.Part imageBodyPart = MultipartBody.Part.createFormData("imgfile", file.getName(), imageBody);
+                                @Override
+                                protected void onSuccess(UploadBean data) {
+                                    getView().hideLoading();
+                                    getView().showToast(data.getUrl());
+                                }
 
-                RetrofitClient.getApi().uploadFile(imageBodyPart);*/
-
-        Map<String, RequestBody> imgMap = getImagesMap();
-
-        mCompositeDisposable.add(
-                authModel.uploadImages(imgMap)
-                        .subscribeWith(new RxObserver<UploadBean>(getView().getContext()) {
-                            @Override
-                            protected void onStart() {
-                                super.onStart();
-                            }
-
-                            @Override
-                            protected void onSuccess(UploadBean data) {
-                                getView().showToast(data.getUrl());
-                            }
-
-                            @Override
-                            protected void onFail(int errorCode, String errorMsg) {
-                                getView().showToast(errorMsg);
-                            }
-                        })
-        );
+                                @Override
+                                protected void onFail(int errorCode, String errorMsg) {
+                                    getView().hideLoading();
+                                    getView().showToast(errorMsg);
+                                }
+                            })
+            );
+        }*/
 
 
+        if (justImgPart != null && backImgPart != null) {
+            Observable<ResponseBean<UploadBean>> justObservable = authModel.uploadFile(UploadModel.CONTROLLER_IDENTITY, justImgPart);
+            Observable<ResponseBean<UploadBean>> backObservable = authModel.uploadFile(UploadModel.CONTROLLER_IDENTITY, backImgPart);
+            mCompositeDisposable.add(
+                    Observable.zip(justObservable, backObservable, new BiFunction<ResponseBean<UploadBean>, ResponseBean<UploadBean>, List<String>>() {
+                        @Override
+                        public List<String> apply(ResponseBean<UploadBean> justUpload, ResponseBean<UploadBean> backUpload) throws Exception {
+                            Log.d("auth", "justimg : " + justUpload.getInfo().getUrl() + " | backimg : " + backUpload.getInfo().getUrl());
+                            List<String> imgUrls = new ArrayList<>();
+                            imgUrls.add(justUpload.getInfo().getUrl());
+                            imgUrls.add(backUpload.getInfo().getUrl());
+                            return imgUrls;
+                        }
+                    })
+                            .flatMap(new Function<List<String>, ObservableSource<ResponseBean<String>>>() {
+                                @Override
+                                public ObservableSource<ResponseBean<String>> apply(List<String> list) throws Exception {
+                                    return authModel.userAuthenticate(getView().getTrueName(),
+                                            getView().getIDCrad(),
+                                            list.get(0),
+                                            list.get(1));
+                                }
+                            })
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribeWith(new RxObserver<String>(getView().getContext()) {
+                                @Override
+                                protected void onStart() {
+                                    super.onStart();
+                                    getView().showLoading("身份认证提交中...");
+                                }
+
+                                @Override
+                                protected void onSuccess(String data) {
+                                    getView().hideLoading();
+                                    getView().showToast(data);
+                                    getView().hideSubmit(AuthBean.AUTH_STATUS_AUTHING);
+                                }
+
+                                @Override
+                                protected void onFail(int errorCode, String errorMsg) {
+                                    getView().hideLoading();
+                                    getView().showToast(errorMsg);
+                                }
+                            })
+            );
+        }
     }
 
     private Map<String, RequestBody> getImagesMap() {
-        return null;
+        return imgMap;
     }
 
     public void onActivityResult(final int requestCode, int resultCode, Intent data) {
@@ -119,20 +177,20 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
 
             if (photosPaths.size() > 0) {
 
-                String photoPath = photosPaths.get(0);
+                final String photoPath = photosPaths.get(0);
                 mCompositeDisposable.add(
                         Observable.just(photoPath)
                                 .map(new Function<String, Bitmap>() {
                                     @Override
-                                    public Bitmap apply(String s) throws Exception {
-                                        return createBitmap(s);
+                                    public Bitmap apply(String path) throws Exception {
+                                        return createBitmap(path);
                                     }
                                 })
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .subscribeWith(new DisposableObserver<Bitmap>() {
+                                .doOnNext(new Consumer<Bitmap>() {
                                     @Override
-                                    public void onNext(Bitmap bitmap) {
+                                    public void accept(Bitmap bitmap) throws Exception {
                                         if (requestCode == AuthActivity.REQUESTCODE_JUST) {
                                             mJustSelectedPhotoPaths.clear();
                                             mJustSelectedPhotoPaths.addAll(photosPaths);
@@ -142,6 +200,21 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
                                             mBackSelectedPhotoPaths.addAll(photosPaths);
                                             getView().showBackImg(bitmap);
                                         }
+                                    }
+
+                                })
+                                .observeOn(Schedulers.io())
+                                .doOnNext(new Consumer<Bitmap>() {
+                                    @Override
+                                    public void accept(Bitmap bitmap) throws Exception {
+                                        createImageBody(requestCode, bitmap, photoPath.substring(photoPath.lastIndexOf("/") + 1));
+                                    }
+                                })
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribeWith(new DisposableObserver<Bitmap>() {
+                                    @Override
+                                    public void onNext(Bitmap bitmap) {
+
                                     }
 
                                     @Override
@@ -157,6 +230,17 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
                 );
             }
 
+        }
+    }
+
+    private void createImageBody(int requestCode, Bitmap bitmap, String photoPath) {
+        File file = ImageUtils.saveBitmapFile(bitmap, photoPath);
+        RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part imageBodyPart = MultipartBody.Part.createFormData("img", file.getName(), imageBody);
+        if (requestCode == AuthActivity.REQUESTCODE_JUST) {
+            justImgPart = imageBodyPart;
+        } else if (requestCode == AuthActivity.REQUESTCODE_BACK) {
+            backImgPart = imageBodyPart;
         }
     }
 
@@ -179,11 +263,8 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
         matrix.setScale(scale, scale);
         Bitmap matrixBitmap = Bitmap.createBitmap(bitmap, 0, 0, imgWidth, imgHeight, matrix, true);
         if (imgWidth < imgHeight) {
-            Bitmap rotateBitmap = ImageUtils.rotateImage(matrixBitmap, 90);
-            ImageUtils.saveBitmapFile(rotateBitmap, photoPath);
-            return rotateBitmap;
+            return ImageUtils.rotateImage(matrixBitmap, 90);
         }
-        ImageUtils.saveBitmapFile(matrixBitmap, photoPath);
         return matrixBitmap;
     }
 

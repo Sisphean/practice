@@ -64,10 +64,8 @@ public class StorageUtil {
             }
 
             if (!file.exists()) {
-                if (!file.exists()) {
-                    if (!file.createNewFile()) {
-                        throw new RuntimeException("file create fail");
-                    }
+                if (!file.createNewFile()) {
+                    throw new RuntimeException("file create fail");
                 }
             }
             return file;
