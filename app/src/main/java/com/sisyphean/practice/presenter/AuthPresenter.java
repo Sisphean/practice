@@ -44,7 +44,6 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
     private AuthModel authModel;
     public ArrayList<String> mJustSelectedPhotoPaths = new ArrayList<>();
     public ArrayList<String> mBackSelectedPhotoPaths = new ArrayList<>();
-    private Map<String, RequestBody> imgMap = new HashMap<>();
     private MultipartBody.Part justImgPart;
     private MultipartBody.Part backImgPart;
 
@@ -67,9 +66,13 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
                 switch (data.getAuthCode()) {
                     case AuthBean.AUTH_STATUS_AUTHING:
                         getView().hideSubmit(AuthBean.AUTH_STATUS_AUTHING);
+                        getView().setTrueName(data.getTrueName());
+                        getView().setIDCard(data.getIdCardNum());
                         break;
                     case AuthBean.AUTH_STATUS_SUNCCESS:
                         getView().hideSubmit(AuthBean.AUTH_STATUS_SUNCCESS);
+                        getView().setTrueName(data.getTrueName());
+                        getView().setIDCard(data.getIdCardNum());
                         break;
                     case AuthBean.AUTH_STATUS_FAIL:
                     case AuthBean.AUTH_STATUS_UNAUTH:
@@ -92,31 +95,6 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
     }
 
     public void userAuthenticate() {
-        /*for (MultipartBody.Part part : imgs) {
-            mCompositeDisposable.add(
-                    authModel.uploadFile(UploadModel.CONTROLLER_IDENTITY, part)
-                            .subscribeWith(new RxObserver<UploadBean>(getView().getContext()) {
-                                @Override
-                                protected void onStart() {
-                                    super.onStart();
-                                    getView().showLoading("上传图片中...");
-                                }
-
-                                @Override
-                                protected void onSuccess(UploadBean data) {
-                                    getView().hideLoading();
-                                    getView().showToast(data.getUrl());
-                                }
-
-                                @Override
-                                protected void onFail(int errorCode, String errorMsg) {
-                                    getView().hideLoading();
-                                    getView().showToast(errorMsg);
-                                }
-                            })
-            );
-        }*/
-
 
         if (justImgPart != null && backImgPart != null) {
             Observable<ResponseBean<UploadBean>> justObservable = authModel.uploadFile(UploadModel.CONTROLLER_IDENTITY, justImgPart);
@@ -165,10 +143,6 @@ public class AuthPresenter extends BasePresenter<IAuthView> {
                             })
             );
         }
-    }
-
-    private Map<String, RequestBody> getImagesMap() {
-        return imgMap;
     }
 
     public void onActivityResult(final int requestCode, int resultCode, Intent data) {

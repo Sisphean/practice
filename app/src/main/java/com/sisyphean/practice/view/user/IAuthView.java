@@ -22,4 +22,7 @@ public interface IAuthView extends IView {
 
     String getIDCrad();
 
+    void setTrueName(String trueName);
+
+    void setIDCard(String idCardNum);
 }

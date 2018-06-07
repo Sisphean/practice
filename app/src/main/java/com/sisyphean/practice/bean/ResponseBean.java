@@ -9,6 +9,7 @@ public class ResponseBean<T> {
 
     private T info;
     private int status;
+    private String errorMsg;
 
     public T getInfo() {
         return info;
@@ -26,11 +27,20 @@ public class ResponseBean<T> {
         this.status = status;
     }
 
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+
     @Override
     public String toString() {
         return "ResponseBean{" +
                 "info=" + info +
                 ", status=" + status +
+                ", errorMsg='" + errorMsg + '\'' +
                 '}';
     }
 }

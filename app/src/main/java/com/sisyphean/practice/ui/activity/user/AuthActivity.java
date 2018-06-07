@@ -174,4 +174,14 @@ public class AuthActivity extends BaseToolBarActivity<AuthPresenter> implements 
     public String getIDCrad() {
         return et_idcard.getText().toString();
     }
+
+    @Override
+    public void setTrueName(String trueName) {
+        et_truename.setText(trueName);
+    }
+
+    @Override
+    public void setIDCard(String idCardNum) {
+        et_idcard.setText(idCardNum);
+    }
 }

@@ -1,5 +1,6 @@
 package com.sisyphean.practice;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -42,6 +43,10 @@ public class App extends Application {
         context = this;
 
         RetrofitClient.getInstance();
+
+        ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        int memoryClass = activityManager.getMemoryClass();
+        Log.d(getClass().getSimpleName(), "heap size = " + memoryClass);
     }
 
 
